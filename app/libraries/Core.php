@@ -1,4 +1,5 @@
 <?php 
+defined('BASEPATH') or exit('No se permite el acceso directo');
 
 /* 
 	Mapear la url del navegador
@@ -13,7 +14,7 @@
  */
 class Core
 {
-	protected $controladorActual = 'home';
+	protected $controladorActual = 'Inicio';
 	protected $metodoActual = 'index';
 	protected $parametros = [];
 
@@ -22,14 +23,14 @@ class Core
 		$url = $this->getUrl();
 		
 		// Busca si el controlador existe
-		if (file_exists('../app/controllers/'.ucwords($url[0]).'.php')) {
+		if (file_exists(PATH_CONTROLLERS . ucwords($url[0]).'.php')) {
 			// si existe queda por defecto
 			$this->controladorActual = ucwords($url[0]);
 			unset($url[0]);
 		}
 
 		// Requerir controller
-		require_once '../app/controllers/' . $this->controladorActual . '.php';
+		require_once PATH_CONTROLLERS . $this->controladorActual . '.php';
 		$this->controladorActual = new $this->controladorActual;
 
 		// Verificar el método
