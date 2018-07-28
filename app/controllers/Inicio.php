@@ -1,14 +1,15 @@
 <?php 
+defined('BASEPATH') or exit('No se permite el acceso directo');
 
 /**
  * 
  */
-class Home extends Controller
+class Inicio extends Controller
 {
 	
 	function __construct()
 	{
-		// $this->articuloModelo = $this->model('Ejemplo_Articulo');
+		$this->articuloModelo = $this->model('Ejemplo_Articulo');
 	}
 
 	public function index()
@@ -20,7 +21,7 @@ class Home extends Controller
 		];
 
 		$this->view('inc/header');
-		$this->view('home/inicio', $data);
+		$this->view('Inicio/inicio', $data);
 		$this->view('inc/footer');
 	}
 }
