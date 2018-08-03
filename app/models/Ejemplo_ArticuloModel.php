@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Ejemplo_Articulo extends DBConnect
+class Ejemplo_ArticuloModel extends DBConnect
 {
 	private $db;
 	

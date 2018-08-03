@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No se permite el acceso directo');
 /**
  * 
  */
-class Inicio extends Controller
+class InicioController extends Controller
 {
 	
 	function __construct()
