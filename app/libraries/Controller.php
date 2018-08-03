@@ -17,9 +17,9 @@ class Controller
 	// Cargar view
 	public function view($view, $data = [])
 	{
-		if (file_exists(PATH_VIEWS . "${view}.php")) {
+		if (file_exists(PATH_VIEWS . "{$view}.php")) {
 			extract($data);
-			require_once PATH_VIEWS . "${view}.php";
+			require_once PATH_VIEWS . "{$view}.php";
 		}else{
 			die('La vista no existe');
 		}
