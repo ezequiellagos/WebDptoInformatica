@@ -1,5 +1,4 @@
-<?php 
-defined('BASEPATH') or exit('No se permite el acceso directo');
+<?php defined('BASEPATH') or exit('No se permite el acceso directo');
 
 /**
  * 
@@ -17,54 +16,43 @@ class LoginController extends Controller
 
 	public function index($param = '')
 	{
-
-		var_dump($this->session->getStatus());
-
 		$data = [
 			'errorMessage' => '',
 			'email'        => '',
 		];
-		$this->view('inc/header');
-		$this->view('Login/login', $data);
-		$this->view('inc/footer');
-	}
 
-	public function login()
-	{
-		$email        = $_POST['email'];
-		$pass         = $_POST['password'];
-		$errorMessage = '';
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$data['email'] = $_POST['email'];
+			$pass          = $_POST['password'];
 
-		var_dump($this->verify($email, $pass));
-
-		if ( $this->verify($email, $pass) )
-			$errorMessage = "El email y password son obligatorios";
-		else{
-			$result = $this->model->getLogin($email);
-			if (!$result)
-				$errorMessage = "Email no válido";
+			if ( $this->verifyEmpty($data['email'], $pass) )
+				$data['errorMessage'] = "El email y password son obligatorios";
 			else{
-				if (!password_verify($pass, $result->password))
-					$errorMessage = "Datos incorrectos";
+				$result = $this->model->getLogin($data['email']);
+				if (!$result)
+					$data['errorMessage'] = "Email no válido";
 				else{
-					// iniciar sesion
-					$this->session->start();
-					$this->session->add('email', $result->email);
-					
-					// redirect('Dashboard/');
-					// header('location: /mvc2/main');
+					if (!password_verify($pass, $result->password))
+						$data['errorMessage'] = "Datos incorrectos";
+					else{
+						// iniciar sesion
+						$this->session->start();
+						$this->session->add('email', $result->email);
+						
+						// redirect('Dashboard/');
+						// header('location: /mvc2/main');
+					}
 				}
+					
 			}
-				
 		}
-
-		$data = [ 'errorMessage' => $errorMessage, 'email' => $email ];
+		
 		$this->view('inc/header');
 		$this->view('Login/login', $data);
 		$this->view('inc/footer');
 	}
 
-	public function verify($email, $pass)
+	public function verifyEmpty($email, $pass)
 	{
 		return empty($email) OR empty($pass);
 	}
@@ -73,11 +61,6 @@ class LoginController extends Controller
 	{
 		$this->session->close();
 		redirect('');
-	}
-
-	public function signIn()
-	{
-		# code...
 	}
 
 	public function hashPassword($pass)

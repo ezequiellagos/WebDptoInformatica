@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') or exit('No se permite el acceso directo');
 
 /**
  * 

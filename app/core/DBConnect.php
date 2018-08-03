@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') or exit('No se permite el acceso directo');
+<?php defined('BASEPATH') or exit('No se permite el acceso directo');
 
 /**
  * Conexión a la base de datos

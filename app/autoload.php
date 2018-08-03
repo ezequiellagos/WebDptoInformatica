@@ -1,4 +1,6 @@
 <?php 
+// Constante para verificar el acceso correcto a los archivos
+define('BASEPATH', true);
 
 // Cargar variables globales
 require_once 'config/config.php';
@@ -13,7 +15,7 @@ spl_autoload_register(function($class){
 		require_once PATH_HELPERS . "{$class}.php";
 	}
 
-	if(is_file(PATH_LIBRARIES . "{$class}.php")){
-		require_once PATH_LIBRARIES . "{$class}.php";
+	if(is_file(PATH_CORE . "{$class}.php")){
+		require_once PATH_CORE . "{$class}.php";
 	}
 });

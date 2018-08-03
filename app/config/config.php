@@ -1,14 +1,7 @@
-<?php
-// Constante para verificar el acceso correcto a los archivos
-define('BASEPATH', true);
+<?php defined('BASEPATH') or exit('No se permite el acceso directo');
 
 // Nombre del sitio
 define('NAME_SITE', 'Departamento de Computación e Informática - UPLA');
-
-
-// Ruta aplicación | al parecer no se esta usando, deberia desaparecer en un futuro
-define('ROUTE_APP', str_replace('\\', '/', dirname(dirname(__FILE__))) . "/");
-
 
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('FOLDER_PATH', '/WebDptoInformatica/');
@@ -18,7 +11,7 @@ define('PATH_CONTROLLERS', ROOT . FOLDER_PATH . 'app/controllers/');
 define('PATH_MODELS', ROOT . FOLDER_PATH . 'app/models/');
 define('PATH_VIEWS', ROOT . FOLDER_PATH . 'app/views/');
 define('PATH_HELPERS', ROOT . FOLDER_PATH . 'app/helpers/');
-define('PATH_LIBRARIES', ROOT . FOLDER_PATH . 'app/libraries/');
+define('PATH_CORE', ROOT . FOLDER_PATH . 'app/core/');
 
 // Base de Datos
 define('DB_HOST', 'localhost');
