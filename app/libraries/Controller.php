@@ -9,6 +9,7 @@ class Controller
 	// Cargar model
 	public function model($model)
 	{
+		$model .= 'Model';
 		require_once PATH_MODELS . "{$model}.php";
 		return new $model();
 	}

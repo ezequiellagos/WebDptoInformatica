@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No se permite el acceso directo');
  */
 class Core
 {
-	protected $controladorActual = 'Inicio';
+	protected $controladorActual = 'InicioController';
 	protected $metodoActual = 'index';
 	protected $parametros = [];
 
@@ -23,9 +23,9 @@ class Core
 		$url = $this->getUrl();
 		
 		// Busca si el controlador existe
-		if (file_exists(PATH_CONTROLLERS . ucwords($url[0]).'.php')) {
+		if (file_exists(PATH_CONTROLLERS . ucwords($url[0]). 'Controller.php')) {
 			// si existe queda por defecto
-			$this->controladorActual = ucwords($url[0]);
+			$this->controladorActual = ucwords($url[0]) . 'Controller';
 			unset($url[0]);
 		}
 
