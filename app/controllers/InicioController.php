@@ -16,7 +16,7 @@ class InicioController extends Controller
 		// $articulos = $this->articuloModelo->getArticulos();
 
 		$data = [
-			'titulo' => 'Bienvenido',
+			'nombre' => 'Javier Castillo',
 		];
 
 		$this->view('inc/header');
