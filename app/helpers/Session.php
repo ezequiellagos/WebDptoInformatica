@@ -16,7 +16,10 @@ class Session
 	// Inicializa la sesión
 	public function start()
 	{
-		session_start();
+		session_start([
+			'name' => 'DeptoInformatica',
+			'cookie_secure' => false,
+		]);
 		$_SESSION['login']     = self::$loginPhrase;
 		$_SESSION['dateLogin'] = date("Y-n-j H:i:s");
 		$_SESSION["timeLogin"] = $this->timeLogin;
@@ -74,6 +77,7 @@ class Session
 	{
 		session_unset();
 		session_destroy();
+		$_SESSION = [];
 	}
 
 	// Retorna el estatus de la sesion
