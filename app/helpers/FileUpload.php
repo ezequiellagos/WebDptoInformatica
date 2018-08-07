@@ -11,15 +11,16 @@ class FileUpload
 	private $fileSize;
 	private $fileError;
 
-	public $fileDir;
-	public $fileSizeLimit;
-	public $fileTypeLimit;
+	private $fileDir;
+	private $fileNewName;
+	private $fileSizeLimit;
+	private $fileTypeLimit;
 
-	private $fileDirFile;
 	private $fileType;
+	private $fileDirFile;
 
 	private $isImage;
-	public $error;
+	public $debug;
 
 	private const KB = 1024;
 	private const MB = 1048576;
@@ -27,51 +28,58 @@ class FileUpload
 	private const TB = 1099511627776;
 
 	
-	public function __construct($file, $dir = '/', $type = [], $isImage = true, $size = 5)
+	public function __construct($file, $filename, $dir = '/', $type = [], $isImage = true, $size = 5)
 	{
 		$this->file          = $file;
-		$this->fileName      = $file['name'];
-		$this->fileTmpName   = $file['tmp_name'];
-		$this->fileSize      = $file['size'];
-		$this->fileError     = $file['error'];
+		$this->fileName      = $this->file['name'];
+		$this->fileTmpName   = $this->file['tmp_name'];
+		$this->fileSize      = $this->file['size'];
+		$this->fileError     = $this->file['error'];
 		
+		$this->fileNewName   = $filename;
 		$this->fileDir       = $dir;
 		$this->fileSizeLimit = $size * self::MB;
 		$this->fileTypeLimit = $type;
 		
-		$this->fileDirFile   = $this->fileDir . basename($this->fileName);
-		$this->fileType      = strtolower(pathinfo($this->fileDirFile, PATHINFO_EXTENSION));
+		$this->fileType      = strtolower(pathinfo($this->fileDir . basename($this->fileName), PATHINFO_EXTENSION));
+		$this->fileDirFile   = $this->fileDir . basename($this->fileNewName . '.' . $this->fileType);
 		
 		$this->isImage       = $isImage;
-		$this->error         = [];
+		$this->debug         = [];
 	}
 
 	public function upload()
 	{
+
+		if ($this->fileError > UPLOAD_ERR_OK) {
+			$this->debug[] = "File empty";
+			return false;
+		}
+		
 		if ($this->isImage && $this->isImage()) {
 			if ($this->fileExist()) {
 				if ($this->fileSize <= $this->fileSizeLimit) {
 					if ($this->validateFormatFile()) {
 						if (move_uploaded_file($this->fileTmpName, $this->fileDirFile)) {
-							$this->error[] = "File Ok";
+							$this->debug[] = "File Ok";
 							return true;
 						}else{
-							$this->error[] = "Error uploading your file";
+							$this->debug[] = "Error uploading your file";
 							return false;
 						}
 					}else{
-						$this->error[] = "Format type invalid";
+						$this->debug[] = "Format type invalid";
 						return false;
 					}
 				}else{
-					$this->error[] = "File size ir more than {$this->fileSizeLimit}";
+					$this->debug[] = "File size ir more than {$this->fileSizeLimit}";
 					return false;
 				}
 			}else{
 				return false;
 			}
 		}else{
-			$this->error[] = "File is not an image";
+			$this->debug[] = "File is not an image";
 		}
 
 		if ($this->isImage === false) {
@@ -79,25 +87,25 @@ class FileUpload
 				if ($this->fileSize <= $this->fileSizeLimit) {
 					if ($this->validateFormatFile()) {
 						if (move_uploaded_file($this->fileTmpName, $this->fileDirFile)) {
-							$this->error[] = "File Ok";
+							$this->debug[] = "File Ok";
 							return true;
 						}else{
-							$this->error[] = "Error uploading your file";
+							$this->debug[] = "Error uploading your file";
 							return false;
 						}
 					}else{
-						$this->error[] = "Format type invalid";
+						$this->debug[] = "Format type invalid";
 						return false;
 					}
 				}else{
-					$this->error[] = "File size ir more than {$this->fileSizeLimit}";
+					$this->debug[] = "File size ir more than {$this->fileSizeLimit}";
 					return false;
 				}
 			}else{
 				return false;
 			}
 		}else{
-			$this->error[] = "File is an image, but no proccess for algorithm";
+			$this->debug[] = "File is an image, but no proccess for algorithm";
 			return false;
 		}
 	}
@@ -106,10 +114,10 @@ class FileUpload
 	{
 		$image = getimagesize($this->fileTmpName);
 		if ($image !== false) {
-			$this->error[] = "File is an image {$image['mime']}";
+			$this->debug[] = "File is an image {$image['mime']}";
 			return true;
 		}else{
-			$this->error[] = "File is not an image";
+			$this->debug[] = "File is not an image";
 			return false;
 		}
 	}
@@ -117,10 +125,10 @@ class FileUpload
 	private function fileExist()
 	{
 		if (file_exists($this->fileDirFile)) {
-			$this->error[] = "File already exists";
+			$this->debug[] = "File already exists";
 			return false;
 		}else{
-			$this->error[] = "File not exists"; // borrar
+			$this->debug[] = "File not exists"; // borrar
 			return true;
 		}
 	}
@@ -129,10 +137,10 @@ class FileUpload
 	{
 		foreach ($this->fileTypeLimit as $key => $value) {
 			if ($this->fileType == $value) {
-				$this->error[] = "File format correct: {$value}";
+				$this->debug[] = "File format correct: {$value}";
 				return true;
 			}else{
-				$this->error[] = "File format not supported: {$value}";
+				$this->debug[] = "File format not supported: {$value}";
 			}
 		}
 		return false;
