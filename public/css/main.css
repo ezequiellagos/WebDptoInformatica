@@ -1,3 +1,17 @@
 body{
 	font-family: 'Lato', sans-serif;
 }
+
+.bg-light {
+    background-color: #0099cc !important;
+}
+.bmd-help, .text-muted {
+    color: #151515 !important;
+}
+.carousel .slide{
+	width: 50vh;
+	
+}
+.fondo{
+	background: #151515;
+}
