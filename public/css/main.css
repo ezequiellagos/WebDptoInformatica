@@ -1,5 +1,6 @@
-body{
-	font-family: 'Lato', sans-serif;
+html, body {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
 }
 
 .bg-light {
