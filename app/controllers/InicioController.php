@@ -22,5 +22,18 @@ class InicioController extends Controller
 		$this->view('inc/header');
 		$this->view('Inicio/inicio', $data);
 		$this->view('inc/footer');
+	}	
+
+	public function academico()
+	{
+		// $articulos = $this->articuloModelo->getArticulos();
+
+		$data = [
+			'nombre' => 'Javier Castillo',
+		];
+
+		$this->view('inc/header');
+		$this->view('Inicio/academico', $data);
+		$this->view('inc/footer');
 	}
 }
