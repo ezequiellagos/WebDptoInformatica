@@ -18,18 +18,4 @@ class LoginModel extends DBConnect
 		$this->db->bind(':email', $email);
 		return $this->db->record();
 	}
-
-	public function addUser($data)
-	{
-		$this->db->query('INSERT INTO usuarios (nombre, email, telefono) VALUES (:nombre, :email, :telefono)');
-
-		$this->db->bind(':nombre', $data['nombre']);
-		$this->db->bind(':email', $data['email']);
-		$this->db->bind(':telefono', $data['telefono']);
-
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
-	}
 }
