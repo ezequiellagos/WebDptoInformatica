@@ -13,5 +13,8 @@ body{
 	
 }
 .fondo{
-	background: #151515;
+	background: #e9ecef;
+}
+.margen{
+	margin-bottom: 1rem;
 }

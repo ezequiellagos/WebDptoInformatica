@@ -27,12 +27,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+	<div class="row">
+		<div class="col-10">
+	<ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Academicos</a>
+        <a class="nav-link" href="<?= ROUTE_URL ?>inicio/Academicos.php">Academicos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Departamento</a>
@@ -42,7 +44,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Carreras
+          Carrera
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">Ingenieria Informatica</a>
@@ -59,6 +61,12 @@
         <a class="nav-link" href="#">Contacto</a>
       </li>
     </ul>
+		</div>
+		<div class="col-2">
+			<button type="button" class="btn btn-outline-dark">Iniciar sesion</button>
+		</div>
+	</div>
+
   </div>
 </nav>
 	
