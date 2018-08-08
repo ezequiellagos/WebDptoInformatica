@@ -47,9 +47,9 @@ class LoginController extends Controller
 			}
 		}
 		
-		$this->view('inc/header');
+		// $this->view('inc/header');
 		$this->view('Login/login', $data);
-		$this->view('inc/footer');
+		// $this->view('inc/footer');
 	}
 
 	public function verifyEmpty($email, $pass)
