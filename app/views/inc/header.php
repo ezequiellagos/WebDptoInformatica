@@ -63,7 +63,7 @@
 			</div>
 
 			<div class="col-2">
-				<button type="button" class="btn btn-outline-dark">Iniciar sesion</button>
+				<a href="<?= ROUTE_URL ?>login/" class="btn btn-outline-dark">Iniciar sesión</a>
 			</div>
 		</div>
 	</div>
