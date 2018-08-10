@@ -14,6 +14,9 @@ class InicioController extends Controller
 	public function index()
 	{
 		// $articulos = $this->articuloModelo->getArticulos();
+		$this->css('test');
+		$this->css('test');
+		$this->js('test');
 
 		$data = [
 			'nombre' => 'Javier Castillo',
