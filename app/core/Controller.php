@@ -23,4 +23,12 @@ class Controller
 			die('La vista no existe');
 		}
 	}
+
+	// Cargar un helper
+	public function helper($helper)
+	{
+		$helper .= 'Helper';
+		require_once PATH_HELPERS . "{$helper}.php";
+		return new $helper();
+	}
 }

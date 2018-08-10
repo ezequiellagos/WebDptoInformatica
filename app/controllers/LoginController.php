@@ -11,7 +11,7 @@ class LoginController extends Controller
 	public function __construct()
 	{
 		$this->model = $this->model('Login');
-		$this->session = new Session();
+		$this->session = $this->helper('Session');
 	}
 
 	public function index($param = '')
