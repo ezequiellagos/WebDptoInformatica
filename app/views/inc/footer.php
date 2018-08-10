@@ -19,7 +19,7 @@
 	<!-- Another JS -->
 	<?php if (isset($js) AND !empty($js)): ?>
 		<?php foreach ($js as $value): ?>
-			<link rel="stylesheet" type="text/css" href="<?= ROUTE_URL ?>js/<?= $value ?>.js">
+			<script src="<?= ROUTE_URL ?>js/<?= $value ?>.js"></script>
 		<?php endforeach ?>
 	<?php endif ?>
 
