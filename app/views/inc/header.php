@@ -10,6 +10,14 @@
 
 	<!-- Material for Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="<?= ROUTE_URL ?>css/bootstrap-material-design.min.css">
+
+	<!-- Another CSS -->
+	<?php if (isset($css) AND !empty($css)): ?>
+		<?php foreach ($css as $value): ?>
+			<link rel="stylesheet" type="text/css" href="<?= ROUTE_URL ?>css/<?= $value ?>.css">
+		<?php endforeach ?>
+	<?php endif ?>
+
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="<?= ROUTE_URL ?>css/main.css">
 
