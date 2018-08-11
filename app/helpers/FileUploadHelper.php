@@ -3,7 +3,7 @@
 /**
  * 
  */
-class FileUpload
+class FileUploadHelper
 {
 	private $file;
 	private $fileName;
@@ -28,7 +28,12 @@ class FileUpload
 	private const TB = 1099511627776;
 
 	
-	public function __construct($file, $filename, $dir = '/', $type = [], $isImage = true, $size = 5)
+	public function __construct()
+	{
+		
+	}
+
+	public function setup($file, $filename, $dir = '/', $type = [], $isImage = true, $size = 5)
 	{
 		$this->file          = $file;
 		$this->fileName      = $this->file['name'];

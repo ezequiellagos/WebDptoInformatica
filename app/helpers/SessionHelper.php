@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Session
+class SessionHelper
 {
 	private static $loginPhrase = "On";
 	public $timeLogin = 600;
