@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +25,6 @@
 
 </head>
 <body>
-
-=======
->>>>>>> b6adfb55bb0cd26fb5fd0ad64cc71b4cffdcb4ee
-=======
->>>>>>> b6adfb55bb0cd26fb5fd0ad64cc71b4cffdcb4ee
 
 <div class="container h-100">
 	<div class="row h-100">
