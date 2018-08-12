@@ -13,3 +13,17 @@ if(!function_exists('escapeCharacters')){
 		return htmlspecialchars(trim($string), ENT_COMPAT | ENT_QUOTES);
 	}
 }
+
+// Crea y asigna variables que vienen desde $_POST con el mismo nombre
+if (!function_exists('loadPost')) {
+	function loadPost($expected = []) {
+		foreach($expected as $key){
+			if(!empty($_POST[$key])){
+				${key}=$_POST[$key];
+			}
+			else{
+				${key}=NULL;
+			}
+		}
+	}
+}
