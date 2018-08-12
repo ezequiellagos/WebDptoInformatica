@@ -20,3 +20,11 @@ define('DB_PASS', '');
 define('DB_NAME', 'depto_informatica');
 define('DB_DRIVER', 'mysql');
 define('DB_CHARSET', 'UTF8');
+
+
+// Desarrollo
+error_reporting(E_ALL);
+
+// Produccion
+// error_reporting(0);
+
