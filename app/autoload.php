@@ -9,6 +9,8 @@ require_once 'config/config.php';
 require_once PATH_HELPERS . 'url_helper.php';
 require_once PATH_HELPERS . 'clean_input_helper.php';
 
+require_once 'vendor/autoload.php';
+
 // Cargar librerias
 spl_autoload_register(function($class){
 	if(is_file(PATH_HELPERS . "{$class}.php")){
