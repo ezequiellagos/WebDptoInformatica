@@ -5,9 +5,11 @@ define('BASEPATH', true);
 // Cargar variables globales
 require_once 'config/config.php';
 
+// Composer dependencias
+require_once 'vendor/autoload.php';
+
 // Cargar helpers que no son clases
-require_once PATH_HELPERS . 'url_helper.php';
-require_once PATH_HELPERS . 'clean_input_helper.php';
+require_once PATH_HELPERS . 'helpers_functions.php';
 
 // Cargar librerias
 spl_autoload_register(function($class){

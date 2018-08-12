@@ -13,6 +13,8 @@ define('PATH_VIEWS', ROOT . FOLDER_PATH . 'app/views/');
 define('PATH_HELPERS', ROOT . FOLDER_PATH . 'app/helpers/');
 define('PATH_CORE', ROOT . FOLDER_PATH . 'app/core/');
 
+define('PATH_CSS', ROOT . FOLDER_PATH . 'public/css/');
+
 // Base de Datos
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
