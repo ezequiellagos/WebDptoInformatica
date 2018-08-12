@@ -38,7 +38,7 @@ class Controller
 		$data['js'] = $this->js;
 
 		// Se renderiza la vista
-		echo $twig->render($view . '.php', $data);
+		echo $twig->render($view . '.twig', $data);
 	}
 
 	// Cargar un helper
