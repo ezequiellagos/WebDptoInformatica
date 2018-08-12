@@ -19,10 +19,7 @@ class InicioController extends Controller
 			'nombre' => '',
 		];
 
-		$this->view('inc/header');
-		$this->view('inc/menu');
 		$this->view('Inicio/inicio', $data);
-		$this->view('inc/footer');
 	}	
 
 	public function academico()

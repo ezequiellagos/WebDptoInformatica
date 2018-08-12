@@ -47,7 +47,6 @@ class LoginController extends Controller
 			}
 		}
 		
-		$this->view('inc/header');
 		$this->view('Login/login', $data);
 	}
 

@@ -26,16 +26,19 @@ class Controller
 	// Cargar view
 	public function view($view, $data = [])
 	{
-		$this->load['css'] = $this->css;
-		$this->load['js'] = $this->js;
+		// Se configura el motor de plantillas
+		$loader = new Twig_Loader_Filesystem( PATH_VIEWS );
+		$twig = new Twig_Environment($loader, []);
 
-		if (file_exists(PATH_VIEWS . "{$view}.php")) {
-			extract($this->load);
-			extract($data);
-			require_once PATH_VIEWS . "{$view}.php";
-		}else{
-			die('La vista no existe');
-		}
+		// Se añaden las variables globales definidas por la aplicación
+		$varGlobals = get_defined_constants(true);
+		$twig->addGlobal('app', $varGlobals['user']);
+
+		$data['css'] = $this->css;
+		$data['js'] = $this->js;
+
+		// Se renderiza la vista
+		echo $twig->render($view . '.php', $data);
 	}
 
 	// Cargar un helper
