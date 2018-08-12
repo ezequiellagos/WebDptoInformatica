@@ -13,9 +13,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/bootstrap-material-design.min.css">
 
 		{# Another CSS #}
-		{% if (css is defined) and (css is not empty) %}
+		{% if css is defined %}
 			{% for css in css %}
-				<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/{{ css }}.css">
+				{% if css is not empty %}
+					<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/{{ css }}.css">
+				{% endif %}
 			{% endfor %}
 		{% endif %}
 
@@ -27,7 +29,7 @@
 		<title>{{ app.NAME_SITE }}</title>
 
 	</head>
-	<body>	
+	<body>  
 {% endblock %}
 
 {% block menu %}
@@ -89,7 +91,7 @@
 			<p class="float-right fondo">
 				<a href="#">Subir</a>
 			</p>
-			<a href="#"><img src="{{ app.ROUTE_URL }}img/instagram.jpg" alt="" width="95" class="rounded-circle"></a>	
+			<a href="#"><img src="{{ app.ROUTE_URL }}img/instagram.jpg" alt="" width="95" class="rounded-circle"></a>   
 			<a href="#"><img src="{{ app.ROUTE_URL }}img/facebook.jpg" alt="" width="125"class="rounded-circle"></a>
 			<a href="#"><img src="{{ app.ROUTE_URL }}img/twitter.png" alt="" width="55"class="rounded-circle"></a>
 		</div>
@@ -103,9 +105,11 @@
 		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 		{# Another JS #}
-		{% if (js is defined) and (js is not empty) %}
+		{% if js is defined %}
 			{% for js in js %}
-				<script src="{{ app.ROUTE_URL }}js/{{ js }}.js"></script>
+				{% if js is not empty %}
+					<script src="{{ app.ROUTE_URL }}js/{{ js }}.js"></script>
+				{% endif %}
 			{% endfor %}
 		{% endif %}
 

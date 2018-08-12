@@ -42,19 +42,19 @@ class Controller
 	}
 
 	// Cargar un helper
-	public function helper($helper)
+	public function helper($helper = '')
 	{
 		$helper .= 'Helper';
 		require_once PATH_HELPERS . "{$helper}.php";
 		return new $helper();
 	}
 
-	public function css($css)
+	public function css($css = '')
 	{
 		$this->css[] = $css;
 	}
 
-	public function js($js)
+	public function js($js = '')
 	{
 		$this->js[] = $js;
 	}
