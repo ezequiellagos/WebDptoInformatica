@@ -11,7 +11,7 @@ class SignupController extends Controller
 	public function __construct()
 	{
 		$this->model = $this->model('Signup');
-		$this->session = new Session();
+		$this->session = $this->helper('Session');
 	}
 
 	public function index($param = '')
@@ -47,9 +47,7 @@ class SignupController extends Controller
 			}
 		}
 		
-		$this->view('inc/header');
 		$this->view('Signup/signup', $data);
-		$this->view('inc/footer');
 	}
 
 	public function verifyEmpty($email, $pass)

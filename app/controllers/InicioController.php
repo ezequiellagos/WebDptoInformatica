@@ -22,16 +22,13 @@ class InicioController extends Controller
 		$this->view('Inicio/inicio', $data);
 	}	
 
-	public function academico()
+	public function academicos()
 	{
-		// $articulos = $this->articuloModelo->getArticulos();
 
 		$data = [
 			'nombre' => '',
 		];
 
-		$this->view('inc/header');
 		$this->view('Inicio/academico', $data);
-		$this->view('inc/footer');
 	}
 }
