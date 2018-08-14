@@ -24,7 +24,7 @@
 		{# Custom CSS #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/main.css">
 
-		<link rel="shortcut icon" href="http://www.upla.cl/portada/wp-content/uploads/2015/05/favicon.ico" />
+		<link rel="shortcut icon" href="{{ app.ROUTE_URL }}img/favicon.ico" />
 
 		<title>{{ app.NAME_SITE }}</title>
 
@@ -34,7 +34,7 @@
 
 {% block menu %}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="{{ app.ROUTE_URL }}">
 			<img src="{{ app.ROUTE_URL }}img/upla.png" width="60" height="60">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@
 							<a class="nav-link" href="{{ app.ROUTE_URL }}Inicio/Academicos">Académicos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Departamento</a>
+							<a class="nav-link" href="{{ app.ROUTE_URL }}Inicio/Departamento">Departamento</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Alumnos</a>
