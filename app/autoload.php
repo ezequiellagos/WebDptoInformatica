@@ -20,4 +20,8 @@ spl_autoload_register(function($class){
 	if(is_file(PATH_CORE . "{$class}.php")){
 		require_once PATH_CORE . "{$class}.php";
 	}
+
+	if(is_file(PATH_CONTROLLERS . "{$class}.php")){
+		require_once PATH_CONTROLLERS . "{$class}.php";
+	}
 });

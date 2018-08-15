@@ -13,7 +13,7 @@
  */
 class Core
 {
-	protected $controladorActual = 'InicioController';
+	protected $controladorActual = 'Inicio';
 	protected $metodoActual = 'index';
 	protected $parametros = [];
 
@@ -26,26 +26,32 @@ class Core
 			// si existe queda por defecto
 			$this->controladorActual = ucwords($url[0]) . 'Controller';
 			unset($url[0]);
-		}
 
-		// Requerir controller
-		require_once PATH_CONTROLLERS . $this->controladorActual . '.php';
-		$this->controladorActual = new $this->controladorActual;
+			// Requerir controller
+			// require_once PATH_CONTROLLERS . $this->controladorActual . '.php';
+			$this->controladorActual = new $this->controladorActual;
 
-		// Verificar el método
-		if (isset($url[1])) {
-			if (method_exists($this->controladorActual, $url[1])) {
-				$this->metodoActual = $url[1];
-				unset($url[1]);
+			// Verificar el método
+			if (isset($url[1])) {
+				if (method_exists($this->controladorActual, $url[1])) {
+					$this->metodoActual = $url[1];
+					unset($url[1]);
+				}else{
+					$error = new Errors();
+					$error->methodNotFound();
+				}
 			}
+
+			// Obtener parametros
+			$this->parametros = $url ? array_values($url) : [];
+			// print_r($this->parametros);
+
+			// callback con parametros array
+			call_user_func_array([$this->controladorActual, $this->metodoActual], $this->parametros);
+		}else{
+			$error = new Errors();
+			$error->controllerNotFound();
 		}
-
-		// Obtener parametros
-		$this->parametros = $url ? array_values($url) : [];
-
-		// callback con parametros array
-		call_user_func_array([$this->controladorActual, $this->metodoActual], $this->parametros);
-
 	}
 
 	public function getUrl()
@@ -54,6 +60,9 @@ class Core
 			$url = rtrim($_GET['url'], '/');
 			$url = filter_var($url, FILTER_SANITIZE_URL);
 			$url = explode('/', $url);
+			return $url;
+		}else{
+			$url = [$this->controladorActual];
 			return $url;
 		}
 	}
