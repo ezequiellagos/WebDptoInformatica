@@ -6,7 +6,7 @@
 class InicioController extends Controller
 {
 	
-	function __construct()
+	public function __construct()
 	{
 		// $this->articuloModelo = $this->model('Ejemplo_Articulo');
 	}
@@ -16,19 +16,9 @@ class InicioController extends Controller
 		// $articulos = $this->articuloModelo->getArticulos();
 
 		$data = [
-			'nombre' => '',
+			'active' => 'inicio',
 		];
 
 		$this->view('Inicio/inicio', $data);
-	}	
-
-	public function academicos()
-	{
-
-		$data = [
-			'nombre' => '',
-		];
-
-		$this->view('Inicio/academico', $data);
 	}
 }
