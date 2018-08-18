@@ -15,6 +15,7 @@ class InvestigacionController extends Controller
 	{
 		$data = [
 			'active' => 'investigacion',
+			'title' => 'Investigaciones',
 		];
 		
 		$this->view('Inicio/investigacion', $data);

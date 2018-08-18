@@ -15,6 +15,7 @@ class AlumnosController extends Controller
 	{
 		$data = [
 			'active' => 'alumnos',
+			'title' => 'Alumnos',
 		];
 		
 		$this->view('Inicio/alumnos', $data);

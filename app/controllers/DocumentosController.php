@@ -15,6 +15,7 @@ class DocumentosController extends Controller
 	{
 		$data = [
 			'active' => 'documentos',
+			'title' => 'Documentos',
 		];
 		
 		$this->view('Inicio/documentos', $data);

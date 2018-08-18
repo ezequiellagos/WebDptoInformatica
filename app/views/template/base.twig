@@ -9,6 +9,9 @@
 		{# Tipografía Universidad de Playa Ancha #}
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
 
+		{# Fontawsome #}
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 		{# Material for Bootstrap CSS #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/bootstrap-material-design.min.css">
 
@@ -33,7 +36,7 @@
 {% endblock %}
 
 {% block menu %}
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-upla">
 		<a class="navbar-brand" href="{{ app.ROUTE_URL }}">
 			<img src="{{ app.ROUTE_URL }}img/upla.png" width="60" height="60">
 		</a>
@@ -83,17 +86,64 @@
 	</nav>
 {% endblock %}
 
-{% block content %}{% endblock %}
+{% block main %}
+	{% block headboard %}
+		<div class="jumbotron" style="margin-bottom: 0px">
+			<div class="container">
+				<h1 class="display-3">{{title}}</h1>
+			</div>
+		</div>
+	{% endblock %}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-md-9" style="margin-top: 32px;">
+				<div class="col-10 offset-1">
+					{% block content %}{% endblock %}
+				</div>
+			</div>
+
+			{% block side_bar %}
+				<div class="col-md-3" style="background-color: #cccccc;">
+					{# Notificaciones #}
+					<br>
+
+					{# Twitter Widget #}
+					<h4>Twitter</h4>
+					<a class="twitter-timeline" href="https://twitter.com/ezeiur?ref_src=twsrc%5Etfw" data-chrome="noheader nofooter"  data-height="600">Tweets by ezeiur</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					
+					{# Facebook Widget #}
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=209954432725077&autoLogAppEvents=1';
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					
+					<br>
+					<h4>Facebook</h4>
+					<div style="width: auto;">
+						<div class="fb-page" data-href="https://www.facebook.com/Prende2016/" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-width="500"><blockquote cite="https://www.facebook.com/Prende2016/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Prende2016/">Prende</a></blockquote></div>
+					</div>
+					<br>					
+
+				</div>
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}
 
 {% block footer %}
-	<footer class="text-muted fondo ">
+	<footer class="footer text-muted fondo ">
 		<div class="container flex-row fondo">
 			<p class="float-right fondo">
 				<a href="#">Subir</a>
 			</p>
-			<a href="#"><img src="{{ app.ROUTE_URL }}img/instagram.jpg" alt="" width="95" class="rounded-circle"></a>   
-			<a href="#"><img src="{{ app.ROUTE_URL }}img/facebook.jpg" alt="" width="125"class="rounded-circle"></a>
-			<a href="#"><img src="{{ app.ROUTE_URL }}img/twitter.png" alt="" width="55"class="rounded-circle"></a>
+			<a href="#"><i class="fab fa-instagram fa-2x"></i></a>   
+			<a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+			<a href="#"><i class="fab fa-twitter fa-2x"></i></a>
 		</div>
 	</footer>
 {% endblock %}

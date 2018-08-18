@@ -17,6 +17,7 @@ class InicioController extends Controller
 
 		$data = [
 			'active' => 'inicio',
+			'title' => 'Departamento de Computación e Informática',
 		];
 
 		$this->view('Inicio/inicio', $data);

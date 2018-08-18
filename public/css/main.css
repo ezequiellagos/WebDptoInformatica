@@ -1,9 +1,19 @@
 html, body {
-    height: 100%;
-    font-family: 'Lato', sans-serif;
+	height: 100%;
+	font-family: 'Lato', sans-serif;
 }
 
-.bg-light {
+/*Añade las barras laterales al blockquote*/
+.blockquote-left{
+	padding: .5rem 1rem;
+	border-left: .25rem solid #eceeef;
+}
+.blockquote-right{
+	padding: .5rem 1rem;
+	border-right: .25rem solid #eceeef;
+}
+
+.bg-upla {
     background-color: #0099cc !important;
 }
 .bmd-help, .text-muted {

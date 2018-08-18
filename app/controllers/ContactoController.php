@@ -15,6 +15,7 @@ class ContactoController extends Controller
 	{
 		$data = [
 			'active' => 'contacto',
+			'title' => 'Contacto',
 		];
 		
 		$this->view('Inicio/contacto', $data);

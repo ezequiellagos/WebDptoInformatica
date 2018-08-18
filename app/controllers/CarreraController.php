@@ -25,6 +25,7 @@ class CarreraController extends Controller
 	{
 		$data = [
 			'active' => 'carreras',
+			'title' => 'Ingeniería Informática',
 		];
 
 		$this->view('Inicio/informatica', $data);
@@ -34,6 +35,7 @@ class CarreraController extends Controller
 	{
 		$data = [
 			'active' => 'carreras',
+			'title' => 'Ingeniería en Estadística',
 		];
 		
 		$this->view('Inicio/estadistica', $data);

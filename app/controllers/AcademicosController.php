@@ -15,8 +15,9 @@ class AcademicosController extends Controller
 	{
 		$data = [
 			'active' => 'academicos',
+			'title' => 'Académicos',
 		];
 
-		$this->view('Inicio/academico', $data);
+		$this->view('Inicio/academicos', $data);
 	}
 }

@@ -15,6 +15,7 @@ class DepartamentoController extends Controller
 	{
 		$data = [
 			'active' => 'departamento',
+			'title' => 'Departamento',
 		];
 		
 		$this->view('Inicio/departamento', $data);
