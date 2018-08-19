@@ -40,48 +40,44 @@
 		<a class="navbar-brand" href="{{ app.ROUTE_URL }}">
 			<img src="{{ app.ROUTE_URL }}img/upla.png" width="60" height="60">
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<div class="row">
-				<div class="col-10">
-					<ul class="navbar-nav">
-						<li class="nav-item {% if active == 'inicio' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}">Inicio <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item {% if active == 'academicos' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Academicos/">Académicos</a>
-						</li>
-						<li class="nav-item {% if active == 'departamento' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Departamento/">Departamento</a>
-						</li>
-						<li class="nav-item {% if active == 'alumnos' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Alumnos/">Alumnos</a>
-						</li>
-						<li class="nav-item dropdown {% if active == 'carreras' %}active{% endif %}">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carrera</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" href="{{ app.ROUTE_URL }}Carrera/Informatica/">Ingeniería Informática</a>
-								<a class="dropdown-item" href="{{ app.ROUTE_URL }}Carrera/Estadistica/">Ingeniería Estadística</a>
-							</div>
-						</li>
-						<li class="nav-item {% if active == 'investigacion' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Investigacion/">Investigación</a>
-						</li>
-						<li class="nav-item {% if active == 'documentos' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Documentos/">Documentos</a>
-						</li>
-						<li class="nav-item {% if active == 'contacto' %}active{% endif %}">
-							<a class="nav-link" href="{{ app.ROUTE_URL }}Contacto/">Contacto</a>
-						</li>
-					</ul>
-				</div>
 
-				<div class="col-2">
-					<a href="{{ app.ROUTE_URL }}login/" class="btn btn-outline-dark">Iniciar sesión</a>
-				</div>
-			</div>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item {% if active == 'inicio' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}">Inicio <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item {% if active == 'academicos' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Academicos/">Académicos</a>
+				</li>
+				<li class="nav-item {% if active == 'departamento' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Departamento/">Departamento</a>
+				</li>
+				<li class="nav-item {% if active == 'alumnos' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Alumnos/">Alumnos</a>
+				</li>
+				<li class="nav-item dropdown {% if active == 'carreras' %}active{% endif %}">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carrera</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{{ app.ROUTE_URL }}Carrera/Informatica/">Ingeniería Informática</a>
+						<a class="dropdown-item" href="{{ app.ROUTE_URL }}Carrera/Estadistica/">Ingeniería Estadística</a>
+					</div>
+				</li>
+				<li class="nav-item {% if active == 'investigacion' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Investigacion/">Investigación</a>
+				</li>
+				<li class="nav-item {% if active == 'documentos' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Documentos/">Documentos</a>
+				</li>
+				<li class="nav-item {% if active == 'contacto' %}active{% endif %}">
+					<a class="nav-link" href="{{ app.ROUTE_URL }}Contacto/">Contacto</a>
+				</li>
+			</ul>
+			<span class="form-inline my-2 my-lg-0">
+				<a href="{{ app.ROUTE_URL }}login/" class="btn btn-outline">Iniciar sesión</a>
+			</span>
 		</div>
 	</nav>
 {% endblock %}
@@ -115,11 +111,11 @@
 					{# Facebook Widget #}
 					<div id="fb-root"></div>
 					<script>(function(d, s, id) {
-					  var js, fjs = d.getElementsByTagName(s)[0];
-					  if (d.getElementById(id)) return;
-					  js = d.createElement(s); js.id = id;
-					  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=209954432725077&autoLogAppEvents=1';
-					  fjs.parentNode.insertBefore(js, fjs);
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=209954432725077&autoLogAppEvents=1';
+						fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
 					
 					<br>
