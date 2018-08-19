@@ -15,7 +15,6 @@ class SignupModel extends DBConnect
 	public function addUser($data)
 	{
 		$this->db->query('INSERT INTO usuario (nombre, apellido, email, password) VALUES (:nombre, :apellido, :email, :password)');
-
 		$this->db->bind(':nombre', $data['nombre']);
 		$this->db->bind(':apellido', $data['apellido']);
 		$this->db->bind(':email', $data['email']);
