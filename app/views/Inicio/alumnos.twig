@@ -1,5 +1,84 @@
 {% extends 'template/base.twig' %}
 
 {% block content %}
-	
+	<h3>horarios de atencion</h3>
+<table class="table margen">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Profesor</th>
+      <th scope="col">Horario</th>
+      <th scope="col">Sala</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Mark</th>
+      <td> Martes 9:30-10:00</td>
+      <td>403 B</td>
+    </tr>
+    <tr>
+      <th scope="row">Jacob</th>
+      <td>Martes 9:30-10:00</td>
+      <td>403 B</td>
+    </tr>
+    <tr>
+      <th scope="row">Larry</th>
+      <td>Martes 9:30-10:00</td>
+      <td>403 B</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Calendario academico</h3>
+<anchor download="#"><img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="200"></a>
+<h3>Horarios</h3>
+<br>
+<h3>Informatica</h3>
+<div class="row">
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Primer año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Segundo  año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Tercer año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Cuarto año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Quinto año</p>
+	</div>
+	<div class="col-2"></div>
+</div>
+
+<h3>Estadistica</h3>
+<div class="row">
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Primer año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Segundo  año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Tercer año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Cuarto año</p>
+	</div>
+	<div class="col-2">
+		<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+		<p>Quinto año</p>
+	</div>
+	<div class="col-2"></div>
+</div>
 {% endblock %}

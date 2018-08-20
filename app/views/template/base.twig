@@ -134,16 +134,28 @@
 {% block footer %}
 	<footer class="footer text-muted bg-fondo ">
 		<div class="container flex-row bg-fondo">
-			<p class="float-right bg-fondo">
-				<a href="#">Subir</a>
-			</p>
-			<span class="fa-stack fa-2x">
-				<i class="fas fa-square fa-stack-2x"></i>
-				<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-			</span>
-			<a href="#"><i class="fab fa-instagram fa-6x" style="color: #5e5e5e"></i></a>
-			<a href="#"><i class="fab fa-facebook fa-6x" style="color: #5e5e5e"></i></a>
-			<a href="#"><i class="fab fa-twitter fa-6x" style="color: #5e5e5e"></i></a>
+			<div class="row">
+				<div class="col-1">
+					<a href="#"><i class="fab fa-instagram fa-4x" style="color: #5e5e5e"></i></a>
+				</div>
+				<div class="col-1">
+					<a href="#"><i class="fab fa-facebook fa-4x" style="color: #5e5e5e"></i></a>
+				</div>
+				<div class="col-1">
+					<a href="#"><i class="fab fa-twitter fa-4x" style="color: #5e5e5e"></i></a>
+				</div>
+				<div class="col-7">
+					<p>Departamento de computacion e informatica</p>
+					<p>Subida Leopoldo Carvallo 270 ,Playa Ancha ,Valparaiso, Region de Valparaiso</p>
+				</div>
+
+				<div class="col-2">
+					<p class="float-right bg-fondo">
+						<a href="#">Subir</a>
+					</p>
+				</div>
+
+			</div>
 		</div>
 	</footer>
 {% endblock %}
