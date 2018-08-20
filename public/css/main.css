@@ -13,19 +13,22 @@ html, body {
 	border-right: .25rem solid #eceeef;
 }
 
+/* Colores personalizados */
 .bg-upla {
     background-color: #0099cc !important;
 }
+.bg-fondo{
+	background: #e9ecef;
+}
+
 .bmd-help, .text-muted {
     color: #151515 !important;
 }
-.carousel .slide{
+/*.carousel .slide{
 	width: 50vh;
 	
-}
-.fondo{
-	background: #e9ecef;
-}
+}*/
+
 .margen{
 	margin-bottom: 1rem;
 }

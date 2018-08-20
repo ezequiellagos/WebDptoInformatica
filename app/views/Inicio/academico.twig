@@ -1,0 +1,49 @@
+{% extends 'template/base.twig' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-4">
+			<img src="{{ app.ROUTE_URL }}img/no-image.jpg" class="img-fluid">
+		</div>
+		<div class="col-8">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Información Personal</h5>
+						<p class="card-text">
+							<p><b>Nombre: </b>{{ academico.nombre }}</p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Área de Investigación</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Currículum</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+{% endblock %}
