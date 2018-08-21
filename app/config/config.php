@@ -25,10 +25,10 @@ define('DB_CHARSET', 'UTF8');
 
 
 // Desarrollo
-define('DEBUG', true);
+define('APP_DEGUB', true);
 error_reporting(E_ALL);
 
 // Produccion
-// define('DEBUG', false);
+// define('APP_DEGUB', false);
 // error_reporting(0);
 
