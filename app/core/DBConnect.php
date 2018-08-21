@@ -28,8 +28,19 @@ class DBConnect
 			$this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
 			// $this->dbh->exec('set names utf8');
 		} catch (PDOException $e) {
-			$this->error = $e->getMessage();
-			echo $this->error;
+			if (APP_DEGUB) {
+				$this->error = $e->getMessage();
+				echo "<pre>";
+				echo $this->error;
+				echo "<br>";
+				echo "<br>";
+				echo $e;
+				echo "</pre>";
+			} else {
+				echo "Ocurrio un error con la base de datos. Porfavor contacte con el administrador. [111]";
+				echo "<br><a href='".ROUTE_URL."'>Volver</a>";
+				die();
+			}
 		}
 	}
 
@@ -64,7 +75,20 @@ class DBConnect
 	// Ejecuta la consulta
 	public function execute()
 	{
-		return $this->stmt->execute();
+		try {
+			return $this->stmt->execute();
+		} catch (PDOException $e) {
+			if (APP_DEGUB) {
+				echo "<pre>";
+				echo $e->getMessage();
+				echo "<br>";
+				echo "<br>";
+				echo $e;
+				echo "</pre>";
+			} else {
+				echo "Ocurrio un error con la base de datos. Porfavor contacte con el administrador. [222]";
+			}
+		}
 	}
 
 	// Obtiene registros
