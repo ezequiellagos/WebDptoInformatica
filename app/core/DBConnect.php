@@ -64,7 +64,20 @@ class DBConnect
 	// Ejecuta la consulta
 	public function execute()
 	{
-		return $this->stmt->execute();
+		try {
+			return $this->stmt->execute();
+		} catch (PDOException $e) {
+			if (DEBUG) {
+				echo "<pre>";
+				echo $e->getMessage();
+				echo "<br>";
+				echo "<br>";
+				echo $e;
+				echo "</pre>";
+			} else {
+				echo "Ocurrio un error con la base de datos. Porfavor contacte con el administrador.";
+			}
+		}
 	}
 
 	// Obtiene registros
