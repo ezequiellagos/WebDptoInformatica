@@ -16,7 +16,7 @@ class DashboardController extends Controller
 	{
 
 		$data = [
-			'active' => 'contacto',
+			'active' => 'inicio',
 		];
 		
 		$this->view('Dashboard/index', $data);
