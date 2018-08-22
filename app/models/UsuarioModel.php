@@ -28,7 +28,7 @@ class UsuarioModel extends DBConnect
 
 	public function getUsuarios()
 	{
-		$this->db->query("SELECT * FROM usuario");
+		$this->db->query("SELECT nombre, apellido, email, fecha_creacion, fecha_modificacion FROM usuario");
 		return $this->db->records();
 	}
 
@@ -48,11 +48,22 @@ class UsuarioModel extends DBConnect
 
 	public function updateUsuario($data)
 	{
-		$this->db->query('UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email, password = :password WHERE id = :id');
+		$this->db->query('UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email WHERE id = :id');
 		$this->db->bind(':id', $data['id']);
 		$this->db->bind(':nombre', $data['nombre']);
 		$this->db->bind(':apellido', $data['apellido']);
 		$this->db->bind(':email', $data['email']);
+
+		if ($this->db->execute())
+			return true;
+		else
+			return false;
+	}
+
+	public function updatePassword($data)
+	{
+		$this->db->query('UPDATE usuario SET password = :password WHERE id = :id');
+		$this->db->bind(':id', $data['id']);
 		$this->db->bind(':password', $data['password']);
 
 		if ($this->db->execute())

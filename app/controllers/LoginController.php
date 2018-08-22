@@ -38,6 +38,7 @@ class LoginController extends Controller
 						// iniciar sesion
 						$this->session->start();
 						$this->session->add('email', $result->email);
+						$this->session->add('id', $result->id);
 						$this->session->add('sessionActive', true);
 						
 						redirect('Dashboard/');
@@ -59,6 +60,11 @@ class LoginController extends Controller
 	{
 		$this->session->close();
 		redirect('');
+	}
+
+	public function signup()
+	{
+		# code...
 	}
 
 	public function hashPassword($pass)

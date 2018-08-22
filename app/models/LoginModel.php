@@ -14,7 +14,7 @@ class LoginModel extends DBConnect
 
 	public function getLogin($email)
 	{
-		$this->db->query("SELECT email, password FROM usuario WHERE email = :email");
+		$this->db->query("SELECT id, email, password FROM usuario WHERE email = :email");
 		$this->db->bind(':email', $email);
 		return $this->db->record();
 	}
