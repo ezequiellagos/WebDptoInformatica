@@ -8,7 +8,7 @@ class AlumnosController extends Controller
 	
 	public function __construct()
 	{
-		
+		$this->session = $this->helper('Session');
 	}
 
 	public function index()

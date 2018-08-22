@@ -8,6 +8,7 @@ class AcademicosController extends Controller
 	
 	public function __construct()
 	{
+		$this->session = $this->helper('Session');
 		$this->academicoModel = $this->model('Academico');
 	}
 

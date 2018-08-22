@@ -38,9 +38,9 @@ class LoginController extends Controller
 						// iniciar sesion
 						$this->session->start();
 						$this->session->add('email', $result->email);
+						$this->session->add('sessionActive', true);
 						
-						// redirect('Dashboard/');
-						// header('location: /mvc2/main');
+						redirect('Dashboard/');
 					}
 				}
 					

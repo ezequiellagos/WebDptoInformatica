@@ -8,11 +8,13 @@ class DashboardController extends Controller
 	
 	public function __construct()
 	{
-		
+		$this->session = $this->helper('Session');
+		$this->session->validate('');
 	}
 
 	public function index()
 	{
+
 		$data = [
 			'active' => 'contacto',
 		];

@@ -36,6 +36,7 @@ class Controller
 
 		$data['css'] = $this->css;
 		$data['js'] = $this->js;
+		$data['sessionActive'] = (isset($_SESSION['sessionActive']) AND $_SESSION['sessionActive'] === true) ? true : false;
 
 		// Se renderiza la vista
 		echo $twig->render($view . '.twig', $data);

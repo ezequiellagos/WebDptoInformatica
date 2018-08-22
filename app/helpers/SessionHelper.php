@@ -10,40 +10,39 @@ class SessionHelper
 
 	public function __construct()
 	{
-		# code...
+		session_start([
+			'name' => 'DeptoInformatica',
+			'cookie_secure' => false,
+		]);
 	}
 
 	// Inicializa la sesión
 	public function start()
 	{
-		session_start([
-			'name' => 'DeptoInformatica',
-			'cookie_secure' => false,
-		]);
 		$_SESSION['login']     = self::$loginPhrase;
 		$_SESSION['dateLogin'] = date("Y-n-j H:i:s");
 		$_SESSION["timeLogin"] = $this->timeLogin;
 	}
 
 	// Valida que la sesión este aún vigente
-	public function validate()
+	public function validate($redirect)
 	{
 		if(isset($_SESSION['login'])){
 			$dateOld = $_SESSION['dateLogin'];
 			$dateNow = date("Y-n-j H:i:s");
 			if($_SESSION['login'] !== self::$loginPhrase){				
-				redirect('inicio');
+				redirect($redirect);
 			}else{
 				$timeElapsed = (strtotime($dateNow) - strtotime($dateOld));
 				if($timeElapsed >= $_SESSION['timeLogin']){
 					$this->close();
-					redirect('inicio');
+					redirect($redirect);
 				}else{
 					$_SESSION['dateLogin'] = $dateNow;
 				}
 			}
 		}else{
-			redirect('inicio');
+			redirect($redirect);
 		}
 	}
 

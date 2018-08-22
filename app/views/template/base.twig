@@ -32,7 +32,8 @@
 		<title>{{ app.NAME_SITE }}</title>
 
 	</head>
-	<body>  
+	<body>
+		
 {% endblock %}
 
 {% block menu %}
@@ -75,9 +76,16 @@
 					<a class="nav-link" href="{{ app.ROUTE_URL }}Contacto/">Contacto</a>
 				</li>
 			</ul>
-			<span class="form-inline my-2 my-lg-0">
-				<a href="{{ app.ROUTE_URL }}login/" class="btn btn-outline">Iniciar sesión</a>
-			</span>
+			
+			{% if sessionActive == true %}
+				<span class="form-inline my-2 my-lg-0">
+					<a href="{{ app.ROUTE_URL }}Dashboard/" class="btn btn-outline">Dashboard</a>
+				</span>
+			{% else %}
+				<span class="form-inline my-2 my-lg-0">
+					<a href="{{ app.ROUTE_URL }}login/" class="btn btn-outline">Iniciar sesión</a>
+				</span>
+			{% endif %}
 		</div>
 	</nav>
 {% endblock %}
