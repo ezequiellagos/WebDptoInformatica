@@ -91,6 +91,7 @@
 					<i class="fas fa-user-circle fa-fw"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="{{ app.ROUTE_URL }}Perfil/">Perfil</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Salir</a>
 				</div>
@@ -216,7 +217,8 @@
 {% block footer_scripts %}
 		{# Bootstrap core JavaScript #}
 		<script src="{{ app.ROUTE_URL }}js/jquery/jquery-3.3.1.min.js"></script>
-		<script src="{{ app.ROUTE_URL }}js/bootstrap/popper-umd-1.12.6.js"></script>
+		<script src="{{ app.ROUTE_URL }}js/popper/popper.min.js"></script>
+		
 		<script src="{{ app.ROUTE_URL }}js/bootstrap/bootstrap-material-design.min.js"></script>
 
 		{# Core plugin JavaScript #}
