@@ -41,3 +41,6 @@ body{
 .martop{
 	margin-top: 15px;
 }
+.mt-1{
+	margin-top: 2rem !important;
+}

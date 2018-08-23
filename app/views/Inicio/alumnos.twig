@@ -2,84 +2,86 @@
 
 {% block content %}
 	<h3>horarios de atención</h3>
-<table class="table margen">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Profesor</th>
-      <th scope="col">Horario</th>
-      <th scope="col">Sala</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Mark</th>
-      <td> Martes 9:30-10:00</td>
-      <td>403 B</td>
-    </tr>
-    <tr>
-      <th scope="row">Jacob</th>
-      <td>Martes 9:30-10:00</td>
-      <td>403 B</td>
-    </tr>
-    <tr>
-      <th scope="row">Larry</th>
-      <td>Martes 9:30-10:00</td>
-      <td>403 B</td>
-    </tr>
-  </tbody>
-</table>
-<h3>Calendario académico</h3>
-<anchor download="#"><img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="200"></a>
-	<br><br><br><br>
-<h3>Horarios</h3>
-<br>
-<h3>Informática</h3>
-<div class="row">
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width=100vh;>
-		<p>Primer año</p>
+	<table class="table margen">
+  		<thead class="thead-dark">
+    		<tr>
+      			<th >Profesor</th>
+      			<th >Horario</th>
+      			<th >Sala</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+    		<tr>
+      			<th >Mark</th>
+      			<td> Martes 9:30-10:00</td>
+      			<td>403 B</td>
+    		</tr>
+    		<tr>
+      			<th >Jacob</th>
+      			<td>Martes 9:30-10:00</td>
+      			<td>403 B</td>
+    		</tr>
+    		<tr>
+      			<th >Larry</th>
+      			<td>Martes 9:30-10:00</td>
+      			<td>403 B</td>
+   		 	</tr>
+  		</tbody>
+	</table>
+	<div class="mt-1"></div>
+	<h3>Calendario académico</h3>
+	<img src="{{ app.ROUTE_URL }}img/no-image.jpg" width="200">
+	<a href="#"><p>Descargar aqui</p></a>
+	<div class="mt-1"></div>
+	<h3>Horarios</h3>
+	<br>
+	<h3>Informática</h3>
+	<div class="row">
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Primer año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100"> 
+			<p>Segundo  año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width="100">
+			<p>Tercer año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width="100">
+			<p>Cuarto año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width="100">
+			<p>Quinto año</p>
+		</div>
+		<div class="col-2"></div>
 	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width=100vh;> 
-		<p>Segundo  año</p>
+	<div class="mt-1"></div>
+	<h3>Estadística</h3>
+	<div class="row">
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Primer año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Segundo  año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Tercer año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Cuarto año</p>
+		</div>
+		<div class="col-2">
+			<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
+			<p>Quinto año</p>
+		</div>
+		<div class="col-2"></div>
 	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width=100vh;>
-		<p>Tercer año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width=100vh;>
-		<p>Cuarto año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg"  width=100vh>
-		<p>Quinto año</p>
-	</div>
-	<div class="col-sm-2"></div>
-</div>
-<br><br><br>
-<h3>Estadística</h3>
-<div class="row">
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
-		<p>Primer año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
-		<p>Segundo  año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
-		<p>Tercer año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
-		<p>Cuarto año</p>
-	</div>
-	<div class="col-sm-2">
-		<img class="card-img-top" src="{{ app.ROUTE_URL }}img/no-image.jpg" width="100">
-		<p>Quinto año</p>
-	</div>
-	<div class="col-sm-2"></div>
-</div>
 {% endblock %}
