@@ -18,7 +18,50 @@ class DashboardController extends Controller
 		$data = [
 			'active' => 'inicio',
 		];
-		
 		$this->view('Dashboard/index', $data);
+	}
+
+	public function crearNotificacion()
+	{
+		$data = [
+			'active' => 'notificacion',
+			'message' => '',
+		];
+
+		
+		
+		$this->view('Dashboard/crearNotificacion', $data);
+	}
+
+	public function crearNoticia()
+	{
+		$data = [
+			'active' => 'noticia',
+		];
+		$this->view('Dashboard/crearNoticia', $data);
+	}
+
+	public function agregarDocumentos()
+	{
+		$data = [
+			'active' => 'documento',
+		];
+		$this->view('Dashboard/crearDocumento', $data);
+	}
+
+	public function calendarioAcademico()
+	{
+		$data = [
+			'active' => 'calendario',
+		];
+		$this->view('Dashboard/calendarioAcademico', $data);
+	}
+
+	public function crearUsuario()
+	{
+		$data = [
+			'active' => 'usuario',
+		];
+		$this->view('Dashboard/crearUsuario', $data);
 	}
 }
