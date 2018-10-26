@@ -110,6 +110,15 @@
 			{% block side_bar %}
 				<div class="col-md-3" style="background-color: #cccccc;">
 					{# Notificaciones #}
+					<h4>Notificaciones</h4>
+					{% for notif in notificaciones %}
+						<p>
+							<h4>{{ notif.tema }}</h4>
+							<span>{{ notif.mensaje }}</span>
+							<br><span>{{ notif.fecha_creacion }}</span>
+						</p>
+						<hr>
+					{% endfor %}
 					<br>
 
 					{# Twitter Widget #}

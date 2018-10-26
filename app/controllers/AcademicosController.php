@@ -10,6 +10,7 @@ class AcademicosController extends Controller
 	{
 		$this->session = $this->helper('Session');
 		$this->academicoModel = $this->model('Academico');
+		$this->notificacionModel = $this->model('Notificacion');
 	}
 
 	public function index()
@@ -20,6 +21,7 @@ class AcademicosController extends Controller
 			'active' => 'academicos',
 			'title' => 'Académicos',
 			'academicos' => $resultado,
+			'notificaciones' => (array) $this->notificacionModel->getNotificaciones(),
 		];
 
 		$this->view('Inicio/academicos', $data);
@@ -37,6 +39,7 @@ class AcademicosController extends Controller
 			'active' => 'academicos',
 			'title' => $resultado->nombre,
 			'academico' => $resultado,
+			'notificaciones' => (array) $this->notificacionModel->getNotificaciones(),
 		];
 		$this->view('Inicio/academico', $data);
 	}

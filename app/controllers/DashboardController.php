@@ -28,7 +28,19 @@ class DashboardController extends Controller
 			'message' => '',
 		];
 
-		
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			if (!empty($_POST['tema']) && !empty($_POST['mensaje'])) {
+				$this->modelNotificacion = $this->model('Notificacion');
+			
+				$this->modelNotificacion->addNotificacion([
+					'tema' => $_POST['tema'],
+					'mensaje' => $_POST['mensaje'],
+					'usuario_id' => $this->session->get('id'),
+				]);
+
+				$data['message'] = "Notificación enviada";
+			}
+		}
 		
 		$this->view('Dashboard/crearNotificacion', $data);
 	}

@@ -21,15 +21,16 @@ class NotificacionModel extends DBConnect
 
 	public function getNotificaciones()
 	{
-		$this->db->query("SELECT * FROM notificacion");
+		$this->db->query("SELECT * FROM notificacion ORDER BY fecha_creacion DESC LIMIT 10");
 		return $this->db->records();
 	}
 
 	public function addNotificacion($data)
 	{
-		$this->db->query('INSERT INTO notificacion (mensaje, tema) VALUES (:mensaje, :tema)');
+		$this->db->query('INSERT INTO notificacion (mensaje, tema, usuario_id) VALUES (:mensaje, :tema, :usuario_id)');
 		$this->db->bind(':mensaje', $data['mensaje']);
 		$this->db->bind(':tema', $data['tema']);
+		$this->db->bind(':usuario_id', $data['usuario_id']);
 
 		if ($this->db->execute())
 			return true;
