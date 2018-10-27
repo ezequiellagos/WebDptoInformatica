@@ -15,6 +15,9 @@
 		{# Material for Bootstrap CSS #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/bootstrap-material-design.min.css">
 
+		{# Datatables #}
+		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}js/datatables/dataTables.bootstrap4.min.css">
+
 		{# SB Admin #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/sb-admin.min.css">
 
@@ -48,7 +51,7 @@
 			<i class="fas fa-bars"></i>
 		</button>
 
-		<!-- Navbar Search -->
+		{# Navbar Search #}
 		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -60,7 +63,7 @@
 			</div>
 		</form>
 
-		<!-- Navbar -->
+		{# Navbar #}
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown no-arrow mx-1">
 				<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,8 +107,9 @@
 {% block main %}
 	<div id="wrapper">
 	
-		<!-- Sidebar -->
+		{# Sidebar #}
 		<ul class="sidebar navbar-nav">
+			{# Inicio #}
 			<li class="nav-item {% if active == 'inicio' %}active{% endif %}">
 				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
@@ -113,36 +117,41 @@
 				</a>
 			</li>
 
-			<li class="nav-item {% if active == 'notificacion' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/crearNotificacion">
+			{# Notificación #}
+			<li class="nav-item dropdown {% if active == 'notificacion' %}active{% endif %}">
+				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdownNotificacion" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-bell"></i>
 					<span class="text-capitalize">Crear Notificación</span>
 				</a>
+				<div class="dropdown-menu" aria-labelledby="pagesDropdownNotificacion">
+					<a class="dropdown-item" href="{{ app.ROUTE_URL }}Dashboard/Notificacion/">Listar</a>
+					<a class="dropdown-item" href="{{ app.ROUTE_URL }}Dashboard/Notificacion/create/">Crear</a>
+				</div>
 			</li>
 
 			<li class="nav-item {% if active == 'noticia' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/crearNoticia">
+				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/Noticia/">
 					<i class="fas fa-fw fa-newspaper"></i>
 					<span class="text-capitalize">Crear Noticia</span>
 				</a>
 			</li>
 
 			<li class="nav-item {% if active == 'documento' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/agregarDocumentos">
+				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/agregarDocumentos/">
 					<i class="fas fa-fw fa-file"></i>
 					<span class="text-capitalize">Agregar Documento</span>
 				</a>
 			</li>
 
 			<li class="nav-item {% if active == 'calendario' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/CalendarioAcademico">
+				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/CalendarioAcademico/">
 					<i class="far fa-fw fa-calendar-alt"></i>
 					<span class="text-capitalize">Calendario Académico</span>
 				</a>
 			</li>
 
 			<li class="nav-item {% if active == 'usuario' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/crearUsuario">
+				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/crearUsuario/">
 					<i class="fas fa-fw fa-user-plus"></i>
 					<span class="text-capitalize">Crear Usuario</span>
 				</a>
@@ -159,7 +168,7 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
-				<!-- Breadcrumbs-->
+				{# Breadcrumbs #}
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
 						<a href="{{ app.ROUTE_URL }}Dashboard/">Dashboard</a>
@@ -175,7 +184,7 @@
 {% endblock %}
 
 {% block footer %}
-			<!-- Sticky Footer -->
+			{# Sticky Footer #}
 			<footer class="sticky-footer">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
@@ -185,16 +194,16 @@
 			</footer>
 
 		</div>
-		<!-- /.content-wrapper -->
+		{# /.content-wrapper #}
 	</div>
-	<!-- /#wrapper -->
+	{# /#wrapper #}
 
-	<!-- Scroll to Top Button-->
+	{# Scroll to Top Button #}
 	<a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a>
 
-	<!-- Logout Modal-->
+	{# Logout Modal #}
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -226,8 +235,8 @@
 
 		{# Page level plugin JavaScript #}
 		<script src="{{ app.ROUTE_URL }}js/chart.js/Chart.min.js"></script>
-		<script src="{{ app.ROUTE_URL }}js/datatables/jquery.dataTables.js"></script>
-		<script src="{{ app.ROUTE_URL }}js/datatables/dataTables.bootstrap4.js"></script>
+		<script src="{{ app.ROUTE_URL }}js/datatables/jquery.dataTables.min.js"></script>
+		<script src="{{ app.ROUTE_URL }}js/datatables/dataTables.bootstrap4.min.js"></script>
 
 		{# Custom scripts for all pages #}
 		<script src="{{ app.ROUTE_URL }}js/sb-admin/sb-admin.min.js"></script>

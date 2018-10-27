@@ -19,6 +19,12 @@ class NotificacionModel extends DBConnect
 		return $this->db->record();
 	}
 
+	public function getAllNotificaciones()
+	{
+		$this->db->query("SELECT n.id, n.tema, n.mensaje, n.fecha_creacion, u.nombre, u.apellido FROM notificacion n LEFT JOIN usuario u ON n.usuario_id = u.id ORDER BY n.fecha_creacion DESC");
+		return $this->db->records();
+	}
+
 	public function getNotificaciones()
 	{
 		$this->db->query("SELECT * FROM notificacion ORDER BY fecha_creacion DESC LIMIT 10");

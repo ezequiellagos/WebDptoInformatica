@@ -1,0 +1,93 @@
+{% extends 'template/dashboard.twig' %}
+
+{% block breadcrumb %}
+	Listar Notificación
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		{# <form class="form" action="{{ app.ROUTE_URL }}Dashboard/Notificacion/create/" method="POST">
+			<div class="form-group">
+				<label for="tema">Tema *</label>
+				<input type="text" class="form-control" id="tema" name="tema" required>
+				<small id="temaHelp" class="form-text text-muted">Identifique la asignatura, carrera o tema del que se trata</small>
+			</div>
+
+			<div class="form-group">
+				<label for="mensaje">Mensaje *</label>
+				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
+			</div>
+
+			<button type="submit" class="btn btn-outline-info mb-2">Enviar</button>
+
+		</form> #}
+
+		{# <p>
+			{% if message is not empty %}
+				<span class="alert alert-success">{{ message }}</span>
+			{% endif %}
+		</p> #}
+
+		<div class="table-responsive">
+			<table class="table table-striped " id="listarNotificaciones">
+				<thead>
+					<th>Id</th>
+					<th>Tema</th>
+					<th>Mensaje</th>
+					<th>Creado por</th>
+					<th>Fecha de Creación</th>
+					<th>Acción</th>
+				</thead>
+				
+				<tbody>
+				{% for notificacion in content %}
+					<tr>
+						<td>{{notificacion.id}}</td>
+						<td>{{notificacion.tema}}</td>
+						<td>{{notificacion.mensaje}}</td>
+						<td>{{notificacion.nombre}} {{notificacion.apellido}}</td>
+						<td>{{notificacion.fecha_creacion}}</td>
+						<td>
+							<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/update/{{notificacion.id}}" class="btn btn-outline-info">Editar</a>
+							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{notificacion.id}}" data-tema="{{notificacion.tema}}" data-url="{{ app.ROUTE_URL }}Dashboard/Notificacion/delete/{{notificacion.id}}">Eliminar</button>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td>No data</td>
+						<td>No data</td>
+						<td>No data</td>
+						<td>No data</td>
+						<td>No data</td>
+						<td>No data</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+
+	</div>
+
+	{# Logout Modal #}
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteModalLabel">Desea eliminar?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<form action="#" method="POST" id="deleteButton">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<button class="btn btn-danger" type="submit">Eliminar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
