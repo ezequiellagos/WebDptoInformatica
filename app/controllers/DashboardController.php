@@ -50,17 +50,41 @@ class DashboardController extends Controller
 				break;
 
 			case 'read':
-				if (is_numeric($id) && !empty($id) && $id != '') {
-					$data['content'] = $this->modelNotificacion->getNotificacionById($id);
+				// if (is_numeric($id) && !empty($id) && $id != '') {
+				// 	$data['content'] = $this->modelNotificacion->getNotificacionById($id);
 
-				}else{
-					$data['status'] = "danger";
-					$data['message'] = "Se requiere un ID válido";
-				}
+				// }else{
+				// 	$data['status'] = "danger";
+				// 	$data['message'] = "Se requiere un ID válido";
+				// }
 				break;
 
 			case 'update':
-				# code...
+				if ($_SERVER['REQUEST_METHOD'] == 'POST' && (is_numeric($id) && !empty($id))) {
+					if ($this->modelNotificacion->updateNotificacion([
+						'id' => $id,
+						'mensaje' => $_POST['mensaje'],
+						'tema' => $_POST['tema'],
+					])) {
+						$data['status'] = "success";
+						$data['message'] = "Notificación $id actualizada";
+						echo "ok";
+					}else{
+						$data['status'] = "danger";
+						$data['message'] = "Error al eliminar la notificación";
+					}
+				}
+
+				if (!empty($id) && ($_SERVER['REQUEST_METHOD'] != 'POST')) {
+					$data['notificacion'] = $this->modelNotificacion->getNotificacionById($id);
+					if (empty($data['notificacion'])) { redirect('Dashboard/Notificacion/'); }
+					
+				}else{
+					redirect('Dashboard/Notificacion/');
+				}
+					
+				$this->view('Dashboard/actualizarNotificacion', $data);
+				
 				break;
 
 			case 'delete':
@@ -69,7 +93,7 @@ class DashboardController extends Controller
 					if ($this->modelNotificacion->deleteNotificacion($id)) {
 						$data['status'] = "success";
 						$data['message'] = "Notificación $id eliminada";
-						echo "ok";
+						redirect('Dashboard/Notificacion/');
 					}else{
 						$data['status'] = "danger";
 						$data['message'] = "Error al eliminar la notificación";
@@ -81,8 +105,7 @@ class DashboardController extends Controller
 				break;
 			
 			default:
-				// $this->css(['datatables/dataTables.bootstrap4.min']);
-				// $this->js(['datatables/jquery.dataTables']);
+				
 				$data['content'] = $this->modelNotificacion->getAllNotificaciones();
 				$this->view('Dashboard/listarNotificaciones', $data);
 				break;

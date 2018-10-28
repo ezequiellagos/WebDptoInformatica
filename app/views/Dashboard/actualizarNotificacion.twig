@@ -1,0 +1,35 @@
+{% extends 'template/dashboard.twig' %}
+
+{% block breadcrumb %}
+	Actualizar Notificaciones
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h4>Actualizar Notificación {{notificacion.id}}</h4>
+		<form class="form" action="{{ app.ROUTE_URL }}Dashboard/Notificacion/update/{{notificacion.id}}" method="POST">
+			<div class="form-group">
+				<label for="tema">Tema *</label>
+				<input type="text" class="form-control" id="tema" name="tema" value="{{notificacion.tema}}" required>
+				<small id="temaHelp" class="form-text text-muted">Identifique la asignatura, carrera o tema del que se trata</small>
+			</div>
+
+			<div class="form-group">
+				<label for="mensaje">Mensaje *</label>
+				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required>{{notificacion.tema}}</textarea>
+				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
+			</div>
+
+			<button type="submit" class="btn btn-outline-info">Actualizar</button>
+			<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/" class="btn btn-outline-dark">Cancelar</a>
+
+		</form>
+
+		<p>
+			{% if message is not empty %}
+				<span class="alert alert-{{status}}">{{ message }}</span>
+			{% endif %}
+		</p>
+
+
+{% endblock %}
