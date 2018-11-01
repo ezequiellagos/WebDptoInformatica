@@ -59,4 +59,10 @@ class Controller
 	{
 		$this->js[] = $js;
 	}
+
+	public function message($message)
+	{
+		$response = (array_key_exists($message, MESSAGES)) ? MESSAGES[$message] : 'Mensaje no existe' ;
+		return $response;
+	}
 }

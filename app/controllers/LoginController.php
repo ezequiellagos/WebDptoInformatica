@@ -16,35 +16,43 @@ class LoginController extends Controller
 
 	public function index($param = '')
 	{
+		$this->js('https://www.google.com/recaptcha/api.js?render='.RECAPTCHA_SITE_KEY);
 		$data = [
 			'errorMessage' => '',
 			'email'        => '',
+			'page' => 'login',
 		];
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$data['email'] = $_POST['email'];
 			$pass          = $_POST['password'];
 
-			if ( $this->verifyEmpty($data['email'], $pass) )
-				$data['errorMessage'] = "El email y password son obligatorios";
-			else{
-				$result = $this->model->getLogin($data['email']);
-				if (!$result)
-					$data['errorMessage'] = "Email no válido";
-				else{
-					if (!password_verify($pass, $result->password))
-						$data['errorMessage'] = "Datos incorrectos";
+			$response = getCaptcha($_POST['g-recaptcha-response']);
+			if ($response->success === true && $response->score > 0.5) {
+				if ( $this->verifyEmpty($data['email'], $pass) )
+				{
+					$data['errorMessage'] = $this->message('email_password_required');
+				}else{
+					$result = $this->model->getLogin($data['email']);
+					if (!$result)
+						$data['errorMessage'] = $this->message('email_invalid');
 					else{
-						// iniciar sesion
-						$this->session->start();
-						$this->session->add('email', $result->email);
-						$this->session->add('id', $result->id);
-						$this->session->add('sessionActive', true);
-						
-						redirect('Dashboard/');
+						if (!password_verify($pass, $result->password))
+							$data['errorMessage'] = $this->message('data_incorrect');
+						else{
+							// iniciar sesion
+							$this->session->start();
+							$this->session->add('email', $result->email);
+							$this->session->add('id', $result->id);
+							$this->session->add('sessionActive', true);
+							redirect('Dashboard/');
+						}
 					}
 				}
-					
+			}elseif ($response->success == 'error') {
+				$data['errorMessage'] = $this->message('server_captcha_error');
+			}else{
+				$data['errorMessage'] = $this->message('robot_error');
 			}
 		}
 		

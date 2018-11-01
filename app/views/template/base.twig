@@ -19,7 +19,7 @@
 		{% if css is defined %}
 			{% for css in css %}
 				{% if css is not empty %}
-					<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/{{ css }}.css">
+					<link rel="stylesheet" type="text/css" href="{{ css }}">
 				{% endif %}
 			{% endfor %}
 		{% endif %}
@@ -90,7 +90,9 @@
 	</nav>
 {% endblock %}
 
+<span id="page-id" class="d-none">{{page}}</span>
 {% block main %}
+	
 	{% block headboard %}
 		<div class="jumbotron" style="margin-bottom: 0px">
 			<div class="container">
@@ -188,7 +190,7 @@
 		{% if js is defined %}
 			{% for js in js %}
 				{% if js is not empty %}
-					<script src="{{ app.ROUTE_URL }}js/{{ js }}.js"></script>
+					<script src="{{ js }}"></script>
 				{% endif %}
 			{% endfor %}
 		{% endif %}

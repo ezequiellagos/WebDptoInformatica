@@ -19,13 +19,15 @@
 				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
 			</div>
 
+			<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+
 			<button type="submit" class="btn btn-outline-info mb-2">Enviar</button>
 
 		</form>
 
 		<p>
 			{% if message is not empty %}
-				<span class="alert alert-success">{{ message }}</span>
+				<span class="alert alert-{{status}}">{{ message }}</span>
 			{% endif %}
 		</p>
 

@@ -31,6 +31,7 @@
 									<div class="form-group">
 										<div class="alert alert-danger" id="msgAlertLogin" role="alert">{{ errorMessage }}</div>
 									</div>
+									<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 									<a href="{{ app.ROUTE_URL }}" class="btn btn-secondary float-left">Volver</a>
 									<button type="submit" class="btn btn-success float-right" id="btnLogin">Login</button>
 								</form>
