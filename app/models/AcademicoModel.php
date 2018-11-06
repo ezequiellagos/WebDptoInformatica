@@ -31,10 +31,7 @@ class AcademicoModel extends DBConnect
 		$this->db->bind(':nombre', $data['nombre']);
 		$this->db->bind(':descripcion', $data['descripcion']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function updateCategoria($data)
@@ -44,10 +41,7 @@ class AcademicoModel extends DBConnect
 		$this->db->bind(':nombre', $data['nombre']);
 		$this->db->bind(':descripcion', $data['descripcion']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function deleteCategoria($id)
@@ -55,9 +49,6 @@ class AcademicoModel extends DBConnect
 		$this->db->query('DELETE FROM categoria WHERE id = :id');
 		$this->db->bind(':id', $id);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }

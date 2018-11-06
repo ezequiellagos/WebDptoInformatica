@@ -38,10 +38,7 @@ class NotificacionModel extends DBConnect
 		$this->db->bind(':tema', $data['tema']);
 		$this->db->bind(':usuario_id', $data['usuario_id']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function updateNotificacion($data)
@@ -51,10 +48,7 @@ class NotificacionModel extends DBConnect
 		$this->db->bind(':mensaje', $data['mensaje']);
 		$this->db->bind(':tema', $data['tema']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function deleteNotificacion($id)
@@ -62,9 +56,6 @@ class NotificacionModel extends DBConnect
 		$this->db->query('DELETE FROM notificacion WHERE id = :id');
 		$this->db->bind(':id', $id);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }

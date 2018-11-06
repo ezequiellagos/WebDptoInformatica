@@ -26,9 +26,6 @@ class DocumentoModel extends DBConnect
 		$this->db->bind(':descripcion', $data['descripcion']);
 		$this->db->bind(':url', $data['url']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }

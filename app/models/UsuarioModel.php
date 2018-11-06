@@ -40,10 +40,7 @@ class UsuarioModel extends DBConnect
 		$this->db->bind(':email', $data['email']);
 		$this->db->bind(':password', $data['password']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function updateUsuario($data)
@@ -54,10 +51,7 @@ class UsuarioModel extends DBConnect
 		$this->db->bind(':apellido', $data['apellido']);
 		$this->db->bind(':email', $data['email']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function updatePassword($data)
@@ -66,10 +60,7 @@ class UsuarioModel extends DBConnect
 		$this->db->bind(':id', $data['id']);
 		$this->db->bind(':password', $data['password']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function deleteUsuario($id)
@@ -77,9 +68,6 @@ class UsuarioModel extends DBConnect
 		$this->db->query('DELETE FROM usuario WHERE id = :id');
 		$this->db->bind(':id', $id);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }

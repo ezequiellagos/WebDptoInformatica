@@ -40,10 +40,7 @@ class NoticiaModel extends DBConnect
 		$this->db->bind(':url_imagen', $data['url_imagen']);
 		$this->db->bind(':slug', $data['slug']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function updateNoticia($data)
@@ -55,10 +52,7 @@ class NoticiaModel extends DBConnect
 		$this->db->bind(':url_imagen', $data['url_imagen']);
 		$this->db->bind(':slug', $data['slug']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 
 	public function deleteNoticia($id)
@@ -66,9 +60,6 @@ class NoticiaModel extends DBConnect
 		$this->db->query('DELETE FROM noticia WHERE id = :id');
 		$this->db->bind(':id', $id);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }

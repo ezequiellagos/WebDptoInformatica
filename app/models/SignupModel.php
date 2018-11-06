@@ -20,9 +20,6 @@ class SignupModel extends DBConnect
 		$this->db->bind(':email', $data['email']);
 		$this->db->bind(':password', $data['password']);
 
-		if ($this->db->execute())
-			return true;
-		else
-			return false;
+		return $this->db->execute();
 	}
 }
