@@ -6,29 +6,6 @@
 
 {% block content %}
 	<div class="container">
-		{# <form class="form" action="{{ app.ROUTE_URL }}Dashboard/Notificacion/create/" method="POST">
-			<div class="form-group">
-				<label for="tema">Tema *</label>
-				<input type="text" class="form-control" id="tema" name="tema" required>
-				<small id="temaHelp" class="form-text text-muted">Identifique la asignatura, carrera o tema del que se trata</small>
-			</div>
-
-			<div class="form-group">
-				<label for="mensaje">Mensaje *</label>
-				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
-				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
-			</div>
-
-			<button type="submit" class="btn btn-outline-info mb-2">Enviar</button>
-
-		</form> #}
-
-		{# <p>
-			{% if message is not empty %}
-				<span class="alert alert-success">{{ message }}</span>
-			{% endif %}
-		</p> #}
-
 		<div class="table-responsive">
 			<table class="table table-striped " id="listarNotificaciones">
 				<thead>
@@ -91,4 +68,8 @@
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{ app.RECAPTCHA_SITE_KEY }}"></script>
 {% endblock %}

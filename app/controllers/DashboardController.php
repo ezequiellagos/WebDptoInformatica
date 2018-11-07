@@ -23,7 +23,6 @@ class DashboardController extends Controller
 
 	public function Notificacion($crud = '', $id = '')
 	{
-		$this->js('https://www.google.com/recaptcha/api.js?render='.RECAPTCHA_SITE_KEY);
 		$this->modelNotificacion = $this->model('Notificacion');
 
 		$data = [

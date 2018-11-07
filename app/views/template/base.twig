@@ -15,14 +15,8 @@
 		{# Material for Bootstrap CSS #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/bootstrap-material-design.min.css">
 
-		{# Another CSS #}
-		{% if css is defined %}
-			{% for css in css %}
-				{% if css is not empty %}
-					<link rel="stylesheet" type="text/css" href="{{ css }}">
-				{% endif %}
-			{% endfor %}
-		{% endif %}
+		{# External CSS #}
+		{% block css %}{% endblock %}
 
 		{# Custom CSS #}
 		<link rel="stylesheet" type="text/css" href="{{ app.ROUTE_URL }}css/main.css">
@@ -185,15 +179,9 @@
 		<script src="{{ app.ROUTE_URL }}js/popper/popper.min.js"></script>
 		<script src="{{ app.ROUTE_URL }}js/bootstrap/bootstrap-material-design.min.js"></script>
 		<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-
-		{# Another JS #}
-		{% if js is defined %}
-			{% for js in js %}
-				{% if js is not empty %}
-					<script src="{{ js }}"></script>
-				{% endif %}
-			{% endfor %}
-		{% endif %}
+		
+		{# External JS #}
+		{% block scripts %}{% endblock %}
 
 		<script src="{{ app.ROUTE_URL }}js/main.js"></script>
 

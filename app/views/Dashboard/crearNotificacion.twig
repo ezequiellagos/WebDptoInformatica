@@ -33,3 +33,7 @@
 
 	</div>
 {% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{ app.RECAPTCHA_SITE_KEY }}"></script>
+{% endblock %}

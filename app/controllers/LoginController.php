@@ -16,7 +16,6 @@ class LoginController extends Controller
 
 	public function index($param = '')
 	{
-		$this->js('https://www.google.com/recaptcha/api.js?render='.RECAPTCHA_SITE_KEY);
 		$data = [
 			'errorMessage' => '',
 			'email'        => '',

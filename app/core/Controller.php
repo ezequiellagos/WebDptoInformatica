@@ -5,14 +5,11 @@
  */
 class Controller
 {
-	private $css;
-	private $js;
 	private $load;
 
 	public function __construct()
 	{
-		$this->css = [];
-		$this->js = [];
+		//
 	}
 
 	// Cargar model
@@ -34,8 +31,6 @@ class Controller
 		$varGlobals = get_defined_constants(true);
 		$twig->addGlobal('app', $varGlobals['user']);
 
-		$data['css'] = $this->css;
-		$data['js'] = $this->js;
 		$data['sessionActive'] = (isset($_SESSION['sessionActive']) AND $_SESSION['sessionActive'] === true) ? true : false;
 
 		// Se renderiza la vista
@@ -48,16 +43,6 @@ class Controller
 		$helper .= 'Helper';
 		require_once PATH_HELPERS . "{$helper}.php";
 		return new $helper();
-	}
-
-	public function css($css = '')
-	{
-		$this->css[] = $css;
-	}
-
-	public function js($js = '')
-	{
-		$this->js[] = $js;
 	}
 
 	public function message($message)
