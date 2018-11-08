@@ -21,7 +21,7 @@ class NotificacionModel extends DBConnect
 
 	public function getAllNotificaciones()
 	{
-		$this->db->query("SELECT n.id, n.tema, n.mensaje, n.fecha_creacion, u.nombre, u.apellido FROM notificacion n LEFT JOIN usuario u ON n.usuario_id = u.id ORDER BY n.fecha_creacion DESC");
+		$this->db->query("SELECT n.id, n.tema, n.mensaje, n.fecha_creacion, u.nombre, u.apellido FROM notificacion n LEFT JOIN usuario u ON n.usuario_id = u.id ORDER BY n.fecha_creacion DESC LIMIT 100");
 		return $this->db->records();
 	}
 

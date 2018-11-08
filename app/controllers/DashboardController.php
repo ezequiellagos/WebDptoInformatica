@@ -60,39 +60,36 @@ class DashboardController extends Controller
 				$this->view('Dashboard/crearNotificacion', $data);
 				break;
 
-			case 'read':
-				// if (is_numeric($id) && !empty($id) && $id != '') {
-				// 	$data['content'] = $this->modelNotificacion->getNotificacionById($id);
-
-				// }else{
-				// 	$data['status'] = "danger";
-				// 	$data['message'] = "Se requiere un ID válido";
-				// }
-				break;
-
 			case 'update':
 				$data['page'] = 'notificacion_update';
-				if ($_SERVER['REQUEST_METHOD'] == 'POST' && (is_numeric($id) && !empty($id))) {
-					if ($this->modelNotificacion->updateNotificacion([
-						'id' => $id,
-						'mensaje' => $_POST['mensaje'],
-						'tema' => $_POST['tema'],
-					])) {
-						$data['status'] = "success";
-						$data['message'] = "Notificación $id actualizada";
-						echo "ok";
-					}else{
-						$data['status'] = "danger";
-						$data['message'] = "Error al eliminar la notificación";
-					}
-				}
 
 				if (!empty($id) && ($_SERVER['REQUEST_METHOD'] != 'POST')) {
 					$data['notificacion'] = $this->modelNotificacion->getNotificacionById($id);
 					if (empty($data['notificacion'])) { redirect('Dashboard/Notificacion/'); }
 					
 				}else{
-					redirect('Dashboard/Notificacion/');
+					$data['message'] = "No se ha seleccionado una notificación válida";
+				}
+
+				if ($_SERVER['REQUEST_METHOD'] == 'POST' && (is_numeric($id) && !empty($id))) {
+					$response = getCaptcha($_POST['g-recaptcha-response']);
+					if ($response->success == true && $response->score > 0.5) {
+						if ($this->modelNotificacion->updateNotificacion([
+							'id' => $id,
+							'mensaje' => $_POST['mensaje'],
+							'tema' => $_POST['tema'],
+						])) {
+							$data['status'] = "success";
+							$data['message'] = "Notificación $id actualizada";
+						}else{
+							$data['status'] = "danger";
+							$data['message'] = "Error al actualizar la notificación";
+						}
+					}elseif ($response->success == 'error') {
+						$data['message'] = $this->message('server_captcha_error');
+					}else{
+						$data['message'] = $this->message('robot_error');
+					}
 				}
 					
 				$this->view('Dashboard/actualizarNotificacion', $data);
@@ -107,7 +104,7 @@ class DashboardController extends Controller
 						if ($this->modelNotificacion->deleteNotificacion($id)) {
 							$data['status'] = "success";
 							$data['message'] = "Notificación $id eliminada";
-							redirect('Dashboard/Notificacion/');
+							// redirect('Dashboard/Notificacion/');
 						}else{
 							$data['message'] = "Error al eliminar la notificación";
 						}
@@ -121,10 +118,11 @@ class DashboardController extends Controller
 					$data['status'] = "danger";
 					$data['message'] = "Error al intentar eliminar la notificación";
 				}
+				$data['content'] = $this->modelNotificacion->getAllNotificaciones();
+				$this->view('Dashboard/listarNotificaciones', $data);
 				break;
 			
 			default:
-				
 				$data['content'] = $this->modelNotificacion->getAllNotificaciones();
 				$this->view('Dashboard/listarNotificaciones', $data);
 				break;

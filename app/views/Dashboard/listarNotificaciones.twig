@@ -5,49 +5,50 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container">
-		<div class="table-responsive">
-			<table class="table table-striped " id="listarNotificaciones">
-				<thead>
-					<th>Id</th>
-					<th>Tema</th>
-					<th>Mensaje</th>
-					<th>Creado por</th>
-					<th>Fecha de Creación</th>
-					<th>Acción</th>
-				</thead>
-				
-				<tbody>
-				{% for notificacion in content %}
-					<tr>
-						<td>{{notificacion.id}}</td>
-						<td>{{notificacion.tema}}</td>
-						<td>{{notificacion.mensaje}}</td>
-						<td>{{notificacion.nombre}} {{notificacion.apellido}}</td>
-						<td>{{notificacion.fecha_creacion}}</td>
-						<td>
-							<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/update/{{notificacion.id}}" class="btn btn-outline-info">Editar</a>
-							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{notificacion.id}}" data-tema="{{notificacion.tema}}" data-url="{{ app.ROUTE_URL }}Dashboard/Notificacion/delete/{{notificacion.id}}">Eliminar</button>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td>No data</td>
-						<td>No data</td>
-						<td>No data</td>
-						<td>No data</td>
-						<td>No data</td>
-						<td>No data</td>
-					</tr>
-				{% endfor %}
-				</tbody>
-			</table>
-		</div>
-		
-
+	<p>
+		{% if message is not empty %}
+			<span class="alert alert-{{status}}">{{ message }}</span>
+		{% endif %}
+	</p>
+	<div class="table-responsive">
+		<table class="table table-striped " id="listarNotificaciones">
+			<thead>
+				<th>Id</th>
+				<th>Tema</th>
+				<th>Mensaje</th>
+				<th>Creado por</th>
+				<th>Fecha de Creación</th>
+				<th>Acción</th>
+			</thead>
+			
+			<tbody>
+			{% for notificacion in content %}
+				<tr>
+					<td>{{notificacion.id}}</td>
+					<td>{{notificacion.tema}}</td>
+					<td>{{notificacion.mensaje}}</td>
+					<td>{{notificacion.nombre}} {{notificacion.apellido}}</td>
+					<td>{{notificacion.fecha_creacion}}</td>
+					<td>
+						<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/update/{{notificacion.id}}" class="btn btn-outline-info">Editar</a>
+						<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{notificacion.id}}" data-tema="{{notificacion.tema}}" data-url="{{ app.ROUTE_URL }}Dashboard/Notificacion/delete/{{notificacion.id}}">Eliminar</button>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
 	</div>
 
-	{# Logout Modal #}
+	{# Delete Modal #}
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

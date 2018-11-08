@@ -16,12 +16,13 @@
 
 			<div class="form-group">
 				<label for="mensaje">Mensaje *</label>
-				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required>{{notificacion.tema}}</textarea>
+				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required>{{notificacion.mensaje}}</textarea>
 				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
 			</div>
 
+			<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 			<button type="submit" class="btn btn-outline-info">Actualizar</button>
-			<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/" class="btn btn-outline-dark">Cancelar</a>
+			<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/" class="btn btn-outline-dark">Volver</a>
 
 		</form>
 
@@ -32,4 +33,8 @@
 		</p>
 
 
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{ app.RECAPTCHA_SITE_KEY }}"></script>
 {% endblock %}

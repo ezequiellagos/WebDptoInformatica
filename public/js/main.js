@@ -45,6 +45,7 @@ $(document).ready(function() {
 			},
 
 			"order": [[ 0, "desc" ]],
+			"pagingType": "simple_numbers",
 	    });
 	}
 } );
@@ -75,3 +76,4 @@ if (typeof(element) != 'undefined' && element != null)
 		});
 	});
 }
+
