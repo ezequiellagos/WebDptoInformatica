@@ -104,7 +104,6 @@ class DashboardController extends Controller
 						if ($this->modelNotificacion->deleteNotificacion($id)) {
 							$data['status'] = "success";
 							$data['message'] = "Notificación $id eliminada";
-							// redirect('Dashboard/Notificacion/');
 						}else{
 							$data['message'] = "Error al eliminar la notificación";
 						}
@@ -176,10 +175,6 @@ class DashboardController extends Controller
 				# code...
 				break;
 
-			case 'read':
-				# code...
-				break;
-
 			case 'update':
 				# code...
 				break;
@@ -205,10 +200,6 @@ class DashboardController extends Controller
 
 		switch ($crud) {
 			case 'create':
-				# code...
-				break;
-
-			case 'read':
 				# code...
 				break;
 
@@ -251,10 +242,6 @@ class DashboardController extends Controller
 						$data['message'] = "Usuario creado";
 					}
 				}
-				break;
-
-			case 'read':
-				# code...
 				break;
 
 			case 'update':

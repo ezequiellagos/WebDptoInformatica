@@ -116,11 +116,16 @@
 				</div>
 			</li>
 
-			<li class="nav-item {% if active == 'noticia' %}active{% endif %}">
-				<a class="nav-link" href="{{ app.ROUTE_URL }}Dashboard/Noticia/">
+			{# Noticia #}
+			<li class="nav-item dropdown {% if active == 'noticia' %}active{% endif %}">
+				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdownNotificacion" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fas fa-fw fa-newspaper"></i>
 					<span class="text-capitalize">Crear Noticia</span>
 				</a>
+				<div class="dropdown-menu" aria-labelledby="pagesDropdownNotificacion">
+					<a class="dropdown-item" href="{{ app.ROUTE_URL }}Dashboard/Noticia/">Listar</a>
+					<a class="dropdown-item" href="{{ app.ROUTE_URL }}Dashboard/Noticia/create/">Crear</a>
+				</div>
 			</li>
 
 			<li class="nav-item {% if active == 'documento' %}active{% endif %}">
