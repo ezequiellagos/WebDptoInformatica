@@ -75,7 +75,21 @@ class DBConnect
 	// Ejecuta la consulta
 	public function execute()
 	{
-		return $this->stmt->execute();		
+		try {
+			return $this->stmt->execute();
+		} catch (PDOException $e) {
+			if (APP_DEGUB) {
+				echo "<pre>";
+				echo $e;
+				echo "</pre>";
+				return false;
+			} else {
+				echo "<p>Alguien rompió algo! No se preocupe, no fue usted. <br> Porfavor comuníquese con el administrador del sitio</p>";
+				return false;
+			}
+			
+			
+		}	
 	}
 
 	// Obtiene registros
