@@ -62,55 +62,35 @@ class FileUploadHelper
 		}
 		
 		if ($this->isImage && $this->isImage()) {
-			if ($this->fileExist()) {
-				if ($this->fileSize <= $this->fileSizeLimit) {
-					if ($this->validateFormatFile()) {
-						if (move_uploaded_file($this->fileTmpName, $this->fileDirFile)) {
-							$this->debug[] = "File Ok";
-							return true;
+			if ($this->isImage === false) {
+				if ($this->fileExist()) {
+					if ($this->fileSize <= $this->fileSizeLimit) {
+						if ($this->validateFormatFile()) {
+							if (move_uploaded_file($this->fileTmpName, $this->fileDirFile)) {
+								$this->debug[] = "File Ok";
+								return true;
+							}else{
+								$this->debug[] = "Error uploading your file";
+								return false;
+							}
 						}else{
-							$this->debug[] = "Error uploading your file";
+							$this->debug[] = "Format type invalid";
 							return false;
 						}
 					}else{
-						$this->debug[] = "Format type invalid";
+						$this->debug[] = "File size ir more than {$this->fileSizeLimit}";
 						return false;
 					}
 				}else{
-					$this->debug[] = "File size ir more than {$this->fileSizeLimit}";
+					$this->debug[] = "File no exist!";
 					return false;
 				}
-			}else{
+			} else {
+				$this->debug[] = "File is an image, but no proccess for algorithm";
 				return false;
-			}
+			}	
 		}else{
 			$this->debug[] = "File is not an image";
-		}
-
-		if ($this->isImage === false) {
-			if ($this->fileExist()) {
-				if ($this->fileSize <= $this->fileSizeLimit) {
-					if ($this->validateFormatFile()) {
-						if (move_uploaded_file($this->fileTmpName, $this->fileDirFile)) {
-							$this->debug[] = "File Ok";
-							return true;
-						}else{
-							$this->debug[] = "Error uploading your file";
-							return false;
-						}
-					}else{
-						$this->debug[] = "Format type invalid";
-						return false;
-					}
-				}else{
-					$this->debug[] = "File size ir more than {$this->fileSizeLimit}";
-					return false;
-				}
-			}else{
-				return false;
-			}
-		}else{
-			$this->debug[] = "File is an image, but no proccess for algorithm";
 			return false;
 		}
 	}
