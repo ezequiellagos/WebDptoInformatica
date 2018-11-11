@@ -36,8 +36,8 @@ class DashboardController extends Controller
 			case 'create':
 				$data['page'] = 'notificacion_create';
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-					$response = getCaptcha($_POST['g-recaptcha-response']);
-					if ($response->success === true && $response->score > 0.5) {
+					$response = validateCaptcha($_POST['g-recaptcha-response']);
+					if ($response === true) {
 						if (!empty($_POST['tema']) && !empty($_POST['mensaje'])) {
 							$this->modelNotificacion->addNotificacion([
 								'tema' => $_POST['tema'],
@@ -50,10 +50,8 @@ class DashboardController extends Controller
 						}else{
 							$data['message'] = $this->message('fields_required');
 						}
-					}elseif ($response->success == 'error') {
-						$data['message'] = $this->message('server_captcha_error');
 					}else{
-						$data['message'] = $this->message('robot_error');
+						$data['message'] = $response;
 					}
 				}
 
@@ -72,8 +70,8 @@ class DashboardController extends Controller
 				}
 
 				if ($_SERVER['REQUEST_METHOD'] == 'POST' && (is_numeric($id) && !empty($id))) {
-					$response = getCaptcha($_POST['g-recaptcha-response']);
-					if ($response->success == true && $response->score > 0.5) {
+					$response = validateCaptcha($_POST['g-recaptcha-response']);
+					if ($response === true) {
 						if ($this->modelNotificacion->updateNotificacion([
 							'id' => $id,
 							'mensaje' => $_POST['mensaje'],
@@ -85,10 +83,8 @@ class DashboardController extends Controller
 							$data['status'] = "danger";
 							$data['message'] = "Error al actualizar la notificación";
 						}
-					}elseif ($response->success == 'error') {
-						$data['message'] = $this->message('server_captcha_error');
 					}else{
-						$data['message'] = $this->message('robot_error');
+						$data['message'] = $response;
 					}
 				}
 					
@@ -99,18 +95,16 @@ class DashboardController extends Controller
 			case 'delete':
 				$data['page'] = 'notificacion_delete';
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-					$response = getCaptcha($_POST['g-recaptcha-response']);
-					if ($response->success == true && $response->score > 0.5) {
+					$response = validateCaptcha($_POST['g-recaptcha-response']);
+					if ($response === true) {
 						if ($this->modelNotificacion->deleteNotificacion($id)) {
 							$data['status'] = "success";
 							$data['message'] = "Notificación $id eliminada";
 						}else{
 							$data['message'] = "Error al eliminar la notificación";
 						}
-					}elseif ($response->success == 'error') {
-						$data['message'] = $this->message('server_captcha_error');
 					}else{
-						$data['message'] = $this->message('robot_error');
+						$data['message'] = $response;
 					}
 						
 				}else{

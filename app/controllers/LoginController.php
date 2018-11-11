@@ -26,8 +26,8 @@ class LoginController extends Controller
 			$data['email'] = $_POST['email'];
 			$pass          = $_POST['password'];
 
-			$response = getCaptcha($_POST['g-recaptcha-response']);
-			if ($response->success === true && $response->score > 0.5) {
+			$response = validateCaptcha($_POST['g-recaptcha-response']);
+			if ($response === true) {
 				if ( $this->verifyEmpty($data['email'], $pass) )
 				{
 					$data['errorMessage'] = $this->message('email_password_required');
@@ -48,10 +48,8 @@ class LoginController extends Controller
 						}
 					}
 				}
-			}elseif ($response->success == 'error') {
-				$data['errorMessage'] = $this->message('server_captcha_error');
 			}else{
-				$data['errorMessage'] = $this->message('robot_error');
+				$data['message'] = $response;
 			}
 		}
 		

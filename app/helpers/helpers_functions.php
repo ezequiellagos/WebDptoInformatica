@@ -25,3 +25,17 @@ if(!function_exists('getCaptcha')){
 		return $response;
 	}
 }
+
+if(!function_exists('validateCaptcha')){
+	function validateCaptcha($secretKey){
+		$response = getCaptcha($secretKey);
+		if ($response->success === true && $response->score > 0.5) {
+			return true;
+		}elseif ($response->success == 'error') {
+			return MESSAGES['server_captcha_error'];
+		}else{
+			return MESSAGES['robot_error'];
+		}
+	}
+}
+
