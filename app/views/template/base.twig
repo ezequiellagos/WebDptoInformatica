@@ -25,8 +25,21 @@
 
 		<title>{{ app.NAME_SITE }}</title>
 
+		{# Preloader #}
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+		<script>
+			//paste this code under head tag or in a seperate js file.
+			// Wait for window load
+			$(window).load(function() {
+				// Animate loader off screen
+				$(".se-pre-con").fadeOut("slow");;
+			});
+		</script>
+
 	</head>
 	<body>
+		<div class="se-pre-con"></div>		
 		
 {% endblock %}
 
@@ -104,13 +117,13 @@
 			</div>
 
 			{% block side_bar %}
-				<div class="col-md-3" style="background-color: #cccccc;">
+				<div class="col-md-3" style="background-color: #dfe3e8;">
 					{# Notificaciones #}
-					<h4>Notificaciones</h4>
+					<h4 class="mt-2">Notificaciones</h4>
 					{% for notif in notificaciones %}
 						<div class="card border-light mb-3">
-							<div class="card-header"><b>{{ notif.tema }}</b></div>
 							<div class="card-body">
+								<h5 class="card-title"><b>{{ notif.tema }}</b></h5>
 								<p class="card-text">{{ notif.fecha_creacion|date('l j \\d\\e F \\a\\ \\l\\a\\s H:i', "America/Santiago")|replace({
 									'January'  : 'Enero',
 									'February'  : 'Febrero',
@@ -133,7 +146,7 @@
 									'Saturday'   : 'Sábado',
 									'Sunday'   : 'Domingo'
 									}) }}</p>
-								<h5 class="card-title">{{ notif.mensaje }}</h5>
+								<div class="card-text">{{ notif.mensaje|raw }}</div>
 							</div>
 						</div>
 						

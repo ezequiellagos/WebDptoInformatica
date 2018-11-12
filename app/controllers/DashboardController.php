@@ -40,8 +40,8 @@ class DashboardController extends Controller
 					if ($response === true) {
 						if (!empty($_POST['tema']) && !empty($_POST['mensaje'])) {
 							$this->modelNotificacion->addNotificacion([
-								'tema' => $_POST['tema'],
-								'mensaje' => $_POST['mensaje'],
+								'tema' => strip_tags($_POST['tema']),
+								'mensaje' => strip_tags($_POST['mensaje']),
 								'usuario_id' => $this->session->get('id'),
 							]);
 

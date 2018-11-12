@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="row">
 		<div class="col-4">
-			<img src="{{ app.ROUTE_URL }}img/no-image.jpg" class="img-fluid">
+			<img src="{{ app.ROUTE_URL }}img/academicos/{{ academico.imagen_url }}" class="img-fluid">
 		</div>
 		<div class="col-8">
 			<div class="col-12">
@@ -12,6 +12,7 @@
 						<h5 class="card-title">Información Personal</h5>
 						<p class="card-text">
 							<p><b>Nombre: </b>{{ academico.nombre }}</p>
+							<p><b>Descripción: </b>{{ academico.descripcion }}</p>
 						</p>
 					</div>
 				</div>
