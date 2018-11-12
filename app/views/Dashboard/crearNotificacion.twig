@@ -15,7 +15,7 @@
 
 			<div class="form-group">
 				<label for="mensaje">Mensaje *</label>
-				<textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+				<textarea id="mensaje" name="mensaje"></textarea>
 				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
 			</div>
 
@@ -35,5 +35,12 @@
 {% endblock %}
 
 {% block scripts %}
+	<script type="text/javascript">document.getElementById("mensaje").style.display = "none";</script>
 	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{ app.RECAPTCHA_SITE_KEY }}"></script>
+	<script src="{{ app.ROUTE_URL }}js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript">
+		 CKEDITOR.replace( 'mensaje',{
+			
+		 });
+	</script>
 {% endblock %}
