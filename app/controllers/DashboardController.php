@@ -136,10 +136,6 @@ class DashboardController extends Controller
 				# code...
 				break;
 
-			case 'read':
-				# code...
-				break;
-
 			case 'update':
 				# code...
 				break;
@@ -149,12 +145,12 @@ class DashboardController extends Controller
 				break;
 			
 			default:
-				# code...
+				$data['content'] = $this->modelNoticia->getNoticias();
+				$this->view('Dashboard/listarNoticias', $data);
 				break;
 		}
 
 
-		$this->view('Dashboard/crearNoticia', $data);
 	}
 
 	public function agregarDocumentos($crud = '', $id = '')

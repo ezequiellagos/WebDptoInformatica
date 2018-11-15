@@ -6,7 +6,7 @@
 class SessionHelper
 {
 	private static $loginPhrase = "On";
-	public $timeLogin = 600;
+	public $timeLogin = 60000;
 
 	public function __construct()
 	{

@@ -1,0 +1,71 @@
+{% extends 'template/dashboard.twig' %}
+
+{% block breadcrumb %}
+	Listar Noticias
+{% endblock %}
+
+{% block content %}
+	<p>
+		{% if message is not empty %}
+			<span class="alert alert-{{status}}">{{ message }}</span>
+		{% endif %}
+	</p>
+	<div class="table-responsive">
+		<table class="table table-striped " id="listarNoticias">
+			<thead>
+				<th>Id</th>
+				<th>Titulo</th>
+				<th>Creado por</th>
+				<th>Fecha de Creación</th>
+				<th>Fecha de Modificacion</th>
+				<th>Acción</th>
+			</thead>
+			
+			<tbody>
+			{% for noticia in content %}
+				<tr>
+					<td>{{noticia.id}}</td>
+					<td>{{noticia.titulo}}</td>
+					<td></td>
+					<td>{{noticia.fecha_creacion}}</td>
+					<td>{{noticia.fecha_modificacion}}</td>
+					<td>
+						<a href="{{ app.ROUTE_URL }}Dashboard/Notificacion/update/{{noticia.id}}" class="btn btn-outline-info">Editar</a>
+						<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{noticia.id}}" data-titulo="{{noticia.titulo}}" data-url="{{ app.ROUTE_URL }}Dashboard/Notificacion/delete/{{noticia.id}}">Eliminar</button>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+					<td>No data</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	{# Delete Modal #}
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteModalLabel">Desea eliminar?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<form action="#" method="POST" id="deleteButton">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<button class="btn btn-danger" type="submit">Eliminar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
