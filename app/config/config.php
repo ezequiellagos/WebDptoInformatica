@@ -34,6 +34,7 @@ error_reporting(E_ALL);
 // define('APP_DEGUB', false);
 // error_reporting(0);
 
+
 // reCaptcha V3
 define('RECAPTCHA_SITE_KEY', '6LeZlncUAAAAAO-iXhFcC8n0mzHSndLFsmBE5C2B');
 define('RECAPTCHA_SECRET_KEY', '6LeZlncUAAAAANYl3gqGKGoDMUXNHYEHTs7mM5e7');
@@ -51,3 +52,7 @@ define('MESSAGES', [
 	'' => '',
 	'' => '',
 ]);
+
+
+// Se define la zona horaria
+date_default_timezone_set('America/Santiago');
