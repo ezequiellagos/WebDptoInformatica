@@ -133,7 +133,30 @@ class DashboardController extends Controller
 			
 		switch ($crud) {
 			case 'create':
-				# code...
+				$data['page'] = 'noticia_create';
+				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+					$response = validateCaptcha($_POST['g-recaptcha-response']);
+					if ($response === true) {
+						if (!empty($_POST['titulo']) && !empty($_POST['cuerpo'])) {
+							$this->modelNoticia->addNoticia([
+								'titulo' => strip_tags($_POST['titulo']),
+								'cuerpo' => strip_tags($_POST['cuerpo']),
+								'url_imagen' => '/',
+								'slug' => '/',
+								'usuario_id' => $this->session->get('id'),
+								'categoria_id' => 2,
+							]);
+
+							$data['status'] = "success";
+							$data['message'] = $this->message('notification_created');
+						}else{
+							$data['message'] = $this->message('fields_required');
+						}
+					}else{
+						$data['message'] = $response;
+					}
+				}
+				$this->view('Dashboard/crearNoticia', $data);
 				break;
 
 			case 'update':
