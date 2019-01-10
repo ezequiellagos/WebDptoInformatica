@@ -1,0 +1,44 @@
+{% extends 'template/dashboard.twig' %}
+
+{% block breadcrumb %}
+	Actualizar Noticia
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h4>Actualizar Noticia {{noticia.id}}</h4>
+		<form class="form" action="{{ app.ROUTE_URL }}Dashboard/Noticia/update/{{noticia.id}}" method="POST">
+			<div class="form-group">
+				<label for="titulo">titulo *</label>
+				<input type="text" class="form-control" id="titulo" name="titulo" value="{{noticia.titulo}}" required>
+
+			</div>
+
+			<div class="form-group">
+				<label for="cuerpo">Cuerpo *</label>
+				<textarea class="form-control" id="cuerpo" name="cuerpo" rows="3" required>{{noticia.cuerpo}}</textarea>
+				<small id="mensajeHelp" class="form-text text-muted">Campo requerido.</small>
+			</div>
+			
+			<div class="form-gruop">
+				<label for="slug">Slug</label>
+				<input type="text" class="form-control" id="slug" name="slug">
+			</div>
+			<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+			<button type="submit" class="btn btn-outline-info">Actualizar</button>
+			<a href="{{ app.ROUTE_URL }}Dashboard/Noticia/" class="btn btn-outline-dark">Volver</a>
+
+		</form>
+
+		<p>
+			{% if message is not empty %}
+				<span class="alert alert-{{status}}">{{ message }}</span>
+			{% endif %}
+		</p>
+
+
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{ app.RECAPTCHA_SITE_KEY }}"></script>
+{% endblock %}

@@ -160,7 +160,38 @@ class DashboardController extends Controller
 				break;
 
 			case 'update':
-				# code...
+				$data['page'] = 'noticia_update';
+
+				if (!empty($id) && ($_SERVER['REQUEST_METHOD'] != 'POST')) {
+					$data['noticia'] = $this->modelNoticia->getNoticiaById($id);
+					if (empty($data['noticia'])) { redirect('Dashboard/Noticia/'); }
+					
+				}else{
+					$data['message'] = "No se ha seleccionado una noticia válida";
+				}
+
+				if ($_SERVER['REQUEST_METHOD'] == 'POST' && (is_numeric($id) && !empty($id))) {
+					$response = validateCaptcha($_POST['g-recaptcha-response']);
+					if ($response === true) {
+						if ($this->modelNoticia->updateNoticia([
+							'id' => $id,
+							'titulo' => $_POST['titulo'],
+							'cuerpo' => $_POST['cuerpo'],
+							'url_imagen' => '/',
+							'slug' => '/',
+						])) {
+							$data['status'] = "success";
+							$data['message'] = "Notificación $id actualizada";
+						}else{
+							$data['status'] = "danger";
+							$data['message'] = "Error al actualizar la notificación";
+						}
+					}else{
+						$data['message'] = $response;
+					}
+				}
+					
+				$this->view('Dashboard/actualizarNoticia', $data);
 				break;
 
 			case 'delete':
